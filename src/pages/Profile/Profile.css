@@ -1,0 +1,39 @@
+.Profile {
+  
+  .select-input {
+    width: 10rem;
+    /* margin-bottom: -5rem; */
+    position: absolute;
+    bottom: 2rem;
+    
+  }
+  
+  .welcome-user-text {
+    text-align: center; /* Center align text */
+    position: relative;
+  }
+}
+
+.profile-content-container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.welcome-user-text {
+  font-family: 'SpaceGroteskRegular', sans-serif;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.rated-restaurants-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.rated-restauarant-container {
+  min-width: 30rem;
+  width: 49%;
+}

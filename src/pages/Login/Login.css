@@ -1,0 +1,49 @@
+.Login {
+
+  .login-form-container {
+    width: 50%;
+    margin: 3rem auto;
+    background-color: var(--light-orange);
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    padding: 3rem;
+    font-family: 'SpaceGroteskRegular', sans-serif;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-control {
+    padding: .8rem;
+    border: 1px solid var(--dark-orange);
+    border-radius: .2rem;
+    outline: none;
+  }
+
+  label {
+    margin-top: 1rem;
+  }
+
+
+  .btn {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    border: transparent;
+    background-color: var(--dark-orange);
+    color: white;
+    border-radius: .2rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+
+  .btn:active {
+    background-color: hsl(20, 100%, 60%);
+  }
+
+  a {
+    color: black;
+  }
+}

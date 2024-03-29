@@ -1,0 +1,14 @@
+.SimilarRestaurants {
+  padding-top: 3rem;
+  width: 90%;
+  margin: 0 auto;
+
+
+  .similar-restaurants {
+    margin-top: 1rem;
+    font-family: 'SpaceGroteskBold', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,39 @@
+.filter-checkboxes-container {
+  text-align: center;
+  width: 90%;
+  margin: 2rem auto;
+
+  .heading-for-filtering-food {
+    font-family: 'SpaceGroteskRegular', sans-serif;
+  }
+
+  .icon-arrow-down {
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .arrow-down {
+    transform: rotate(-180deg);
+  }
+  
+  .filter-checkboxes {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .filter-checkboxes-and-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .hide-checkboxes {
+    display: none;
+  }
+  
+
+}
+

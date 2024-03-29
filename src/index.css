@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* --light-orange: #ffccb3; */
+  --light-orange: #ffefe7;
+  --dark-orange: #f50;
+}
+
+@font-face {
+  font-family: 'InterBold';
+  src: url('./fonts/Inter-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'InterMedium';
+  src: url('./fonts/Inter-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'InterRegular';
+  src: url('./fonts/Inter-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SpaceGroteskLight';
+  src: url('./fonts/SpaceGrotesk-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SpaceGroteskRegular';
+  src: url('./fonts/SpaceGrotesk-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SpaceGroteskBold';
+  src: url('./fonts/SpaceGrotesk-SemiBold.ttf') format('truetype');
+}
+
+.padding-top-navbar {
+  padding: 8rem 0 4rem 0;
+}
+
+.btn {
+  padding: 0.5rem 0.8rem;
+  border: transparent;
+  background-color: var(--dark-orange);
+  color: white;
+  border-radius: .2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'SpaceGroteskRegular', sans-serif;
+}
+
+.btn-light {
+  padding: 0.5rem 0.8rem;
+  border: transparent;
+  background-color: var(--light-orange);
+  color: var(--dark-orange);
+  border: 1px solid var(--dark-orange);
+  border-radius: .2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'SpaceGroteskRegular', sans-serif;
+}
+
+.btn-disabled {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid grey;
+  background-color: white;
+  color: black;
+  color: grey;
+  border-radius: .2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'SpaceGroteskRegular', sans-serif;
+}
+
+.btn:active {
+  background-color: hsl(20, 100%, 60%);
+}

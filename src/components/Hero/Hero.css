@@ -1,0 +1,10 @@
+.Hero {
+background-color: #ffefe7;
+height: 8rem;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: SpaceGroteskBold, serif;
+color: #f50;
+font-size: 4rem;
+}

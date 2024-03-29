@@ -1,0 +1,48 @@
+.RatedRestaurantCard {
+  border-radius: 1rem;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  /* width: 42rem; */
+  width: 100%;
+  padding-bottom: 1rem;
+  background-color: hsl(20, 100%, 98%);
+  font-family: SpaceGroteskRegular, serif;
+  position: relative;
+  /* background-color: #fefefe; */
+
+  img {
+    filter: grayscale(15%) brightness(70%);
+  }
+
+  .rating-circle {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: var(--light-orange);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-orange);
+    font-size: 1.5rem;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .rated-card-info {
+    padding: 1rem 2rem;
+    font-family: 'InterRegular', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    h2 {
+      font-family: 'SpaceGroteskBold', sans-serif;
+    }
+
+    a {
+      color: black;
+      margin-top: 1rem;
+    }
+  }
+}
+

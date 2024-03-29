@@ -1,0 +1,47 @@
+.Home {
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: .5rem;
+  }
+  
+  .restaurant-area-container {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 3rem;
+    font-family: 'SpaceGroteskBold', sans-serif;
+  }
+  
+  .icon-arrow-down {
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .arrow-down {
+    transform: rotate(-180deg);
+  }
+  .view-more-arrow {
+    text-align: center;
+    cursor: pointer;
+    width: 6rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+  }
+  
+  .filtered-text {
+    width: 90%;
+    margin: 0 auto;
+    font-family: 'InterRegular', sans-serif;
+    margin-bottom: 2rem;
+  }
+
+  /* .area-heading {
+    margin-top: 2rem;
+  } */
+}
+
+
+
+
