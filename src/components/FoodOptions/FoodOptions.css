@@ -23,6 +23,7 @@
     flex-wrap: wrap;
     margin-bottom: 2rem;
   }
+  
   .filter-checkboxes-and-btn {
     display: flex;
     flex-direction: column;

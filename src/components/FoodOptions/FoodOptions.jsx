@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 
-//ändra så filters blir typ foodoptions? eller bättre namn
+// tbd ändra så filters blir typ foodoptions? eller bättre namn
 //also ändra så det blir med understreck och det är efter det man hämtar ut namnet.
 //så foodOption_Pasta: true typ.
 const FoodOptions = ({ filters, handleChange, heading, randomRestaurantId }) => {

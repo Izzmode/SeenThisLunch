@@ -277,7 +277,7 @@ const usersPreviousRatingOfRestaurant = previousRatingObject?.rating
                         }`}
                         onMouseEnter={() => handleMouseEnter(starIndex)}
                         onMouseLeave={handleMouseLeave}
-                        onClick={() => handleRating(starIndex)} // Assuming handleRating function
+                        onClick={() => handleRating(starIndex)} 
                       />
                     )
                   ))}

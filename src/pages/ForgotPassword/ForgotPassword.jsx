@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetPassword } from '../../store/features/auth/authSlice'
-import './ForgotPassword.css'
 import ConfirmationModal from '../../components/Modals/ConfirmationModal'
+import './ForgotPassword.css'
 
 const ForgotPassword = () => {
 
