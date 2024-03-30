@@ -12,6 +12,7 @@ const Add = () => {
   //TBD ta bort checkbox? ta bort outdoor seating från foodoptions? ändra namn på foodoptions?
 
   const { user } = useSelector(state => state.auth)
+  const { error } = useSelector(state => state.restaurants)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -46,12 +47,12 @@ const Add = () => {
     closingHours: ''
   })
 
-  useEffect(() => {
-    if(!user) {
-      navigate('/login')
-    }
+  // useEffect(() => {
+  //   if(!user) {
+  //     navigate('/login')
+  //   }
 
-  }, [user, navigate])
+  // }, [user, navigate])
 
 
   useEffect(() => {
@@ -212,7 +213,7 @@ const Add = () => {
         </label>
         <Checkbox label='Does the restaurant offer outdoor seating?' initState={formData.outdoorSeating} handleChange={handleChange} id="outdoorSeating"/>
         <FoodOptions handleChange={handleChange} heading="What amenities does this restaurant offer?" filters={formData}/>
-
+        {error && <p className='error'>{ error }</p>}
         <button className={`btn btn-submit ${isDisabled && `disabled`}`} onClick={onSubmit}>Add Resturant</button>
       </form>
     </div>

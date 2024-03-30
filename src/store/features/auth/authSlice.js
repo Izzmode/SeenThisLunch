@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import authService from "./authService"
+import { auth } from '../../../firebase/config'
+
 
 const initialState = {
   user: null,
@@ -16,6 +18,19 @@ export const registerUser = createAsyncThunk('auth/register', async (formData, t
     return thunkAPI.rejectWithValue(err.message)
   }
 })
+
+// export const registerUser = createAsyncThunk('auth/register', async (formData, thunkAPI) => {
+//   try {
+//     const userCredential = await authService.signup(formData.email, formData.password);
+//     // console.log(userCredential.user, 'usercred.user')
+//     console.log(userCredential, 'usercred')
+//     await auth.sendEmailVerification(); // Send verification email
+//     return userCredential;
+//   } catch(err) {
+//     return thunkAPI.rejectWithValue(err.message)
+//   }
+// })
+
 export const loginUser = createAsyncThunk('auth/login', async (formData, thunkAPI) => {
   try {
     return await authService.login(formData.email, formData.password);
@@ -24,9 +39,18 @@ export const loginUser = createAsyncThunk('auth/login', async (formData, thunkAP
     return thunkAPI.rejectWithValue(err.message)
   }
 })
+
 export const logoutUser = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     return await authService.logout();
+  }
+  catch(err) {
+    return thunkAPI.rejectWithValue(err.message)
+  }
+})
+export const resetPassword = createAsyncThunk('auth/forgot-password', async (email, thunkAPI) => {
+  try {
+    return await authService.resetPassword(email);
   }
   catch(err) {
     return thunkAPI.rejectWithValue(err.message)

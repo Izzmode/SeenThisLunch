@@ -32,6 +32,10 @@ const Register = () => {
       dispatch(setError('The passwords do not match'))
       return
     }
+    // if(!formData.email.endsWith('@seenthis.se') ) {
+    //   dispatch(setError('This is only for SeenThis employes (and their emails)'))
+    //   return
+    // }
     //lägg till så det måste vara seenthis mail? bekräftelse mail?
 
     await dispatch(registerUser(formData))

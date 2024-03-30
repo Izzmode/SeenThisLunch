@@ -45,6 +45,14 @@
 
   .ul-list {
     display: flex;
+    align-items: baseline;
     gap: 2rem;
+  }
+
+  .not-verified-prompt {
+    color: #333;
+    font-family: 'InterRegular', sans-serif;
+    font-size: .8rem;
+    text-transform: uppercase;
   }
 }

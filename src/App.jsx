@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { authReady } from "./store/features/auth/authSlice"
 import Profile from "./pages/Profile/Profile"
 import ProtectedRoute from "./ProtectedRoutes/ProtectedRoute"
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
 
 function App() {
 
@@ -41,10 +42,15 @@ function App() {
     <Navbar/>
     <Routes>
       <Route path="/" element={<Home/>} />
-      <Route path="/add" element={<Add/>} />
+      <Route path="/add" element={
+        <ProtectedRoute>
+          <Add/>
+        </ProtectedRoute>
+      } />
       <Route path="/restaurants/:id" element={<RestaurantDetails/>} />
       <Route path="/register" element={<Register/>} />
       <Route path="/login" element={<Login/>} />
+      <Route path="/forgot-password" element={<ForgotPassword/>} />
       
       <Route path="/profile" element={
         <ProtectedRoute>

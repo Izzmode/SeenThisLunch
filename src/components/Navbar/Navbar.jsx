@@ -15,17 +15,22 @@ const Navbar = () => {
     navigate('/')
     dispatch(logoutUser())
   }
+  console.log(user)
   
   return (
     <nav className="Navbar">
       <div className="container">
         <div className='logo'><p>SEENTHIS</p><p>LUNCH</p></div>
         <ul className='ul-list'>
+          { user && !user.verifiedEmail &&
+            <p className='not-verified-prompt'>
+            To get full access, please verify your emailadress
+            </p>}
           <li className='list-item'>
             <NavLink to="/">Restaurants</NavLink>
           </li>
-          { user
-            ?
+          { user && user.verifiedEmail
+            &&
             <>
             <li className='list-item'>
             <NavLink to="/add">Add Restaurant</NavLink>
@@ -33,6 +38,10 @@ const Navbar = () => {
           <li className='list-item'>
             <NavLink to="/profile">Profile</NavLink>
           </li>
+          </>
+          }
+          { user ?
+            <>
             <li 
             className='list-item list-item-logout' 
             onClick={handleLogout}>

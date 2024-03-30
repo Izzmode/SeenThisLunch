@@ -242,7 +242,7 @@ const usersPreviousRatingOfRestaurant = previousRatingObject?.rating
                   <span><a href={restaurant.website} target="_blank" rel="noopener noreferrer">To Restaurant Webpage</a></span>
                 </p>
             </div>
-                { user &&
+                { user && user.verifiedEmail &&
             <div className="ratings-container">
               <div className="stars-wrapper">
                 {thankYouForRating ? 
@@ -267,7 +267,7 @@ const usersPreviousRatingOfRestaurant = previousRatingObject?.rating
                         }`}
                         onMouseEnter={() => handleMouseEnter(starIndex)}
                         onMouseLeave={handleMouseLeave}
-                        onClick={() => handleRating(starIndex)} // Assuming handleRating function
+                        onClick={() => handleRating(starIndex)}
                       />
                     ) : (
                       <FaRegStar

@@ -8,7 +8,7 @@ const ProtectedRoute = ({ children }) => {
 
     useEffect(() => {
       const handleNavigation = async () => {
-        if (!user ) {
+        if (!user || !user.verifiedEmail ) {
           setShouldNavigate(true);
         }
       };

@@ -47,6 +47,7 @@ const Login = () => {
           <input type="password" className='form-control' id="password" value={formData.password} onChange={handleChange}/>
           {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
+            <div><Link to="/forgot-password">Forgot password?</Link></div>
           <button className='btn' onClick={handleLogin}>Log in to your account</button>
         </form>
       </div>
