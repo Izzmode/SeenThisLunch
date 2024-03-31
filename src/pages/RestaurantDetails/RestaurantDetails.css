@@ -1,7 +1,6 @@
 .RestaurantDetails {
-  padding-block: 8rem;
   font-family: 'SpaceGroteskRegular', sans-serif;
-}
+
 
   .image-container {
     position: relative;
@@ -140,7 +139,6 @@
     font-size: 1rem;
     align-items: center;
     font-family: 'SpaceGroteskLight', sans-serif;
-
   }
 
   .icon-star {
@@ -158,10 +156,6 @@
   .yellow {
     color: hsl(20, 95%, 65%);
     color: var(--dark-orange);
-  }
-
-  .orange {
-    color: orange;
   }
 
   .website-btn {
@@ -199,4 +193,64 @@
       font-family: 'SpaceGroteskRegular', serif;
     }
   }
+  .map-container {
+    height: 400px;
+  }
+
+  @media screen and (max-width: 1100px) {
+
+
+    .website-button-and-food-options, .map-and-contact-info {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+
+    .map-and-contact-info {
+      flex-direction: column-reverse;
+    }
+
+    .image-text {
+      font-size: 2rem;
+    }
+  }
+  @media screen and (max-width: 700px) {
+
+    .image-text {
+      font-size: 2rem;
+      left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .current-rating {
+      left: 1rem;
+    }
+
+    .info-container {
+      padding-top: 1.3rem;
+      width: 100%;
+      margin: 0 auto;
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+
+    .restaurant-image {
+      height: 15rem;
+    }
+
+    .website-btn {
+      min-width: auto;
+    }
+
+    .contact-info {
+      min-width: auto;
+      width: 100%;
+    }
+
+    .map-container {
+      height: 300px;
+    }
+  }
+
+}
 

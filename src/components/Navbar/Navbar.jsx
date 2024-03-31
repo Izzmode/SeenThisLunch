@@ -12,7 +12,7 @@ const Navbar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
 
-  const [verifiedEmail, setVerifiedEmail] = useState(null);
+  const [verifiedEmail, setVerifiedEmail] = useState(false);
   const [openHamburgerMenu, setOpenHamburgerMenu] = useState(false)
 
   const handleLogout = async () => {
@@ -23,7 +23,6 @@ const Navbar = () => {
   const handleToggleMenu = () => {
     setOpenHamburgerMenu(!openHamburgerMenu)
   };
-
 
   useEffect(() => {
     const storedVerifiedEmail = localStorage.getItem(`verifiedEmail${user?.uid}`);

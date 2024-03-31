@@ -159,12 +159,12 @@ const Add = () => {
   return (
     <div className="Add padding-top-navbar">
       <Hero header='Add Restaurant'/>
-      <p className='add-text'>
-      <b>Lunchtime hero needed!</b><br/>
-      Think you've found the best spot in town? <br/>
-      Add a restaurant below! <br/>
-      The more details you provide, the easier it will be for others to find their next favorite lunch spot.
-      </p>
+      <div className='add-text'>
+      <h2>Lunchtime hero needed!</h2>
+      <p>Think you've found the best spot in town? <br/>
+      Add a restaurant below! <br/></p>
+      <p className='margin-p'>The more details you provide, the easier it will be for others to find their next favorite lunch spot.</p>
+      </div>
       <form className="add-resturant-form">
       <p className='error'>{errorMessage && errorMessage}</p>
         <label htmlFor="name">Resturant name *

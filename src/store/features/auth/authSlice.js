@@ -20,18 +20,6 @@ export const registerUser = createAsyncThunk('auth/register', async (formData, t
   }
 })
 
-// export const registerUser = createAsyncThunk('auth/register', async (formData, thunkAPI) => {
-//   try {
-//     const userCredential = await authService.signup(formData.email, formData.password);
-//     // console.log(userCredential.user, 'usercred.user')
-//     console.log(userCredential, 'usercred')
-//     await auth.sendEmailVerification(); // Send verification email
-//     return userCredential;
-//   } catch(err) {
-//     return thunkAPI.rejectWithValue(err.message)
-//   }
-// })
-
 export const loginUser = createAsyncThunk('auth/login', async (formData, thunkAPI) => {
   try {
     return await authService.login(formData.email, formData.password);
@@ -79,12 +67,6 @@ export const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.user = action.payload
         state.verifiedEmail = action.payload.verifiedEmail
-        console.log(action, 'action')
-        // const user = {
-        //   uid: action.payload.uid,
-        //   email: action.payload.email,
-        //   verifiedEmail: action.payload.emailVerified, 
-        // };
         state.loading = false
         state.error = null
       })
@@ -98,7 +80,6 @@ export const authSlice = createSlice({
         state.loading = true
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        console.log(action, 'action login')
         state.user = action.payload
         state.verifiedEmail = action.payload.verifiedEmail
         state.loading = false

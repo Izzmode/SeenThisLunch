@@ -11,12 +11,6 @@ const signup = async (email, password) => {
   }
 
   await sendEmailVerification(userCredential.user)
-  // if(!userCredential.user.emailVerified) {
-
-  //   return
-  // } else {
-  //   return user
-  // }
   return user
 }
 

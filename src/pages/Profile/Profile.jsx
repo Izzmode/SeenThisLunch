@@ -109,14 +109,6 @@ const Profile = () => {
       <Hero header='Your Profile'/>
       <div className='profile-content-container'>
         <div className='welcome-user-text'>
-            {/* <Select
-              id="sort"
-              value={sortingOptions.find(option => option.value === sortRatedRestaurantsBy)}
-              options={sortingOptions}
-              onChange={handleChange}
-              className='select-input'
-              styles={customStyles}
-            /> */}
           <h2>Welcome!</h2>
           <p>You are logged in as {user.email}</p>
           <p>Below are all the restaurants that you have rated.</p>

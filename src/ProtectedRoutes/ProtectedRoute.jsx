@@ -7,8 +7,9 @@ const ProtectedRoute = ({ children }) => {
     const [shouldNavigate, setShouldNavigate] = useState(false);
 
     useEffect(() => {
+      const storedVerifiedEmail = localStorage.getItem(`verifiedEmail${user?.uid}`);
       const handleNavigation = async () => {
-        if (!user || !user.verifiedEmail ) {
+        if (!user || !storedVerifiedEmail ) {
           setShouldNavigate(true);
         }
       };

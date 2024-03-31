@@ -1,7 +1,8 @@
 .Loader {
   position: fixed;
   inset: 0;
-  z-index: 1;
+   /* map is 1000 */
+  z-index: 1001;
 }
 
 .inner-loader {

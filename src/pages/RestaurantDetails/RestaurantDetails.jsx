@@ -23,6 +23,7 @@ const RestaurantDetails = () => {
   const [ratedValue, setRatedValue] = useState(null)
   const [thankYouForRating, setThankYouForRating] = useState(false)
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [verifiedEmail, setVerifiedEmail] = useState(false);
 
   const { restaurant, error, loading } = useSelector(state => state.restaurants)
   const { user } = useSelector(state => state.auth)
@@ -30,8 +31,8 @@ const RestaurantDetails = () => {
   const { userRatings } = useSelector(state => state.ratings)
   const { restaurants } = useSelector(state => state.restaurants)
 
-const previousRatingObject = userRatings?.find(rating => restaurant?.id === rating.restaurant)
-const usersPreviousRatingOfRestaurant = previousRatingObject?.rating
+  const previousRatingObject = userRatings?.find(rating => restaurant?.id === rating.restaurant)
+  const usersPreviousRatingOfRestaurant = previousRatingObject?.rating
 
   const foodOptions = Object.keys(restaurant || {}).filter(key => {
     const value = restaurant[key];
@@ -77,6 +78,13 @@ const usersPreviousRatingOfRestaurant = previousRatingObject?.rating
   useEffect(() => {
     dispatch(getRestaurants());
    }, [dispatch]);
+
+   useEffect(() => {
+    const storedVerifiedEmail = localStorage.getItem(`verifiedEmail${user?.uid}`);
+    if (storedVerifiedEmail) {
+      setVerifiedEmail(JSON.parse(storedVerifiedEmail));
+    }
+  }, [user]);
 
 
   useEffect(() => {
@@ -134,7 +142,7 @@ const usersPreviousRatingOfRestaurant = previousRatingObject?.rating
   }
 
   return (
-    <div className='RestaurantDetails'>
+    <div className='RestaurantDetails padding-top-navbar'>
       {restaurant && (
       <div className='details-container'>
         <div className="image-container">
@@ -181,7 +189,7 @@ const usersPreviousRatingOfRestaurant = previousRatingObject?.rating
             <div className="map-and-contact-info">
               {restaurant && restaurant.address ? 
               <div className='map-container'>
-                <Map initialAddress={`${restaurant.address}, Stockholm`}/>
+                <Map initialAddress={`${restaurant.address}, Stockholm`} height='100%'/>
               </div>
               :
               <div className='map-container'>
@@ -242,7 +250,7 @@ const usersPreviousRatingOfRestaurant = previousRatingObject?.rating
                   <span><a href={restaurant.website} target="_blank" rel="noopener noreferrer">To Restaurant Webpage</a></span>
                 </p>
             </div>
-                { user && user.verifiedEmail &&
+                { user && verifiedEmail &&
             <div className="ratings-container">
               <div className="stars-wrapper">
                 {thankYouForRating ? 
