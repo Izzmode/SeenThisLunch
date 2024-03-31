@@ -160,8 +160,11 @@ const RestaurantDetails = () => {
             {averageRatingDisplayed !== null && !initialLoad ? (
             <div className='inner-current-rating'>
               <div className='icon-and-number icon-and-number-no-gap'>
-                <span><FaStar className='icon'/></span> 
-                <span className='rating-number'>{averageRatingDisplayed.toFixed(1)}/5</span> 
+                <FaStar className='icon'/>
+                <span className='rating-number'>
+                  {averageRatingDisplayed.toFixed(1)}/5
+                  </span> 
+                {/* <span className='number-of-ratings'>({numberOfRatings})</span>  */}
               </div> 
             </div>
             ) : (

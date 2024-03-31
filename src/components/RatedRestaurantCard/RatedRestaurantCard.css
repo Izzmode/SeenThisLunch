@@ -1,7 +1,6 @@
 .RatedRestaurantCard {
   border-radius: 1rem;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.256);
-  /* width: 42rem; */
   /* min-width: 30rem; */
   /* width: 100%; */
   padding-bottom: 1rem;
@@ -9,7 +8,7 @@
   font-family: 'SpaceGroteskRegular', sans-serif;
   position: relative;
   /* background-color: #fefefe; */
-  border: 1px solid #333;
+  border: 1px solid rgba(0, 0, 0, 0.256);;
 
   .card-image {
     filter: grayscale(15%) brightness(70%);
@@ -51,12 +50,6 @@
     }
   }
 
-  @media screen and (max-width: 1130px) {
-
-
-
-
-  }
 
   @media screen and (max-width: 600px) {
 

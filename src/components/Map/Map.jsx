@@ -19,14 +19,13 @@ const Map = ({ initialAddress, height }) => {
         if (data.length > 0) {
           const { lat: lat1, lon: lon1 } = data[0];
 
-          // Retrieve coordinates for your office address
+          // Retrieve coordinates for office address
           const officeResponse = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent('Hammarby Kaj 10D, Stockholm')}`);
           const officeData = await officeResponse.json();
 
           if (officeData.length > 0) {
             const { lat: lat2, lon: lon2 } = officeData[0];
             const distance = calculateDistance(lat1, lon1, lat2, lon2);
-            console.log(`Distance from the office to the provided address: ${distance.toFixed(2)} km`);
 
             // Create marker for the provided address
             const marker = L.marker([lat1, lon1]).addTo(map);
