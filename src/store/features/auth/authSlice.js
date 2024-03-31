@@ -7,7 +7,8 @@ const initialState = {
   user: null,
   loading: false,
   error: null,
-  authIsReady: false
+  authIsReady: false,
+  verifiedEmail: false
 }
 
 export const registerUser = createAsyncThunk('auth/register', async (formData, thunkAPI) => {
@@ -77,7 +78,13 @@ export const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.user = action.payload
-        console.log(state.user, 'state')
+        state.verifiedEmail = action.payload.verifiedEmail
+        console.log(action, 'action')
+        // const user = {
+        //   uid: action.payload.uid,
+        //   email: action.payload.email,
+        //   verifiedEmail: action.payload.emailVerified, 
+        // };
         state.loading = false
         state.error = null
       })
@@ -91,7 +98,9 @@ export const authSlice = createSlice({
         state.loading = true
       })
       .addCase(loginUser.fulfilled, (state, action) => {
+        console.log(action, 'action login')
         state.user = action.payload
+        state.verifiedEmail = action.payload.verifiedEmail
         state.loading = false
         state.error = null
         

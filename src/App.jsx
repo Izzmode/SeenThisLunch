@@ -26,7 +26,8 @@ function App() {
       if(_user) {
         user = {
           uid: _user.uid,
-          email: _user.email
+          email: _user.email,
+          verifiedEmail: _user.verifiedEmail,
         }
       }
 

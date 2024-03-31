@@ -30,7 +30,7 @@ const RestaurantDetails = () => {
   const { userRatings } = useSelector(state => state.ratings)
   const { restaurants } = useSelector(state => state.restaurants)
 
-const previousRatingObject = userRatings?.find(rating => restaurant.id === rating.restaurant)
+const previousRatingObject = userRatings?.find(rating => restaurant?.id === rating.restaurant)
 const usersPreviousRatingOfRestaurant = previousRatingObject?.rating
 
   const foodOptions = Object.keys(restaurant || {}).filter(key => {

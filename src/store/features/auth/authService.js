@@ -11,12 +11,13 @@ const signup = async (email, password) => {
   }
 
   await sendEmailVerification(userCredential.user)
-  if(!userCredential.user.emailVerified) {
+  // if(!userCredential.user.emailVerified) {
 
-    return
-  } else {
-    return user
-  }
+  //   return
+  // } else {
+  //   return user
+  // }
+  return user
 }
 
 const login = async (email, password) => {
@@ -26,6 +27,8 @@ const login = async (email, password) => {
     email: userCredential.user.email,
     verifiedEmail: userCredential.user.emailVerified
   }
+
+  localStorage.setItem(`verifiedEmail${userCredential.user.uid}`, userCredential.user.emailVerified);
   return user
 }
 const logout = async () => {

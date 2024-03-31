@@ -108,35 +108,43 @@ const Profile = () => {
     <div className='Profile padding-top-navbar'>
       <Hero header='Your Profile'/>
       <div className='profile-content-container'>
-      <div className='welcome-user-text'>
+        <div className='welcome-user-text'>
+            {/* <Select
+              id="sort"
+              value={sortingOptions.find(option => option.value === sortRatedRestaurantsBy)}
+              options={sortingOptions}
+              onChange={handleChange}
+              className='select-input'
+              styles={customStyles}
+            /> */}
+          <h2>Welcome!</h2>
+          <p>You are logged in as {user.email}</p>
+          <p>Below are all the restaurants that you have rated.</p>
           <Select
-            id="sort"
-            value={sortingOptions.find(option => option.value === sortRatedRestaurantsBy)}
-            options={sortingOptions}
-            onChange={handleChange}
-            className='select-input'
-            styles={customStyles}
-          />
-        <h2>Welcome!</h2>
-        <p>You are logged in as {user.email}</p>
-        <p>Below are all the restaurants that you have rated.</p>
-      </div>
-            <div className='rated-restaurants-container'>
-        {combinedData
-          .slice()
-          .sort((a, b) => {
-            if (sortRatedRestaurantsBy === 'rating') {
-              return b.rating - a.rating;
-            } else {
-              return new Date(b.createdAt) - new Date(a.createdAt);
-            }
-          })
-          .map(ratedRestaurant => (
-            <div key={ratedRestaurant.id} className='rated-restauarant-container'>
-              <RatedRestaurantCard ratedRestaurant={ratedRestaurant}/>
-            </div>
-          ))}
-      </div>
+              id="sort"
+              value={sortingOptions.find(option => option.value === sortRatedRestaurantsBy)}
+              options={sortingOptions}
+              onChange={handleChange}
+              className='select-input'
+              styles={customStyles}
+            />
+        </div>
+        <div className='rated-restaurants-container'>
+          {combinedData
+            .slice()
+            .sort((a, b) => {
+              if (sortRatedRestaurantsBy === 'rating') {
+                return b.rating - a.rating;
+              } else {
+                return new Date(b.createdAt) - new Date(a.createdAt);
+              }
+            })
+            .map(ratedRestaurant => (
+              <div key={ratedRestaurant.id} className='rated-restauarant-container'>
+                <RatedRestaurantCard ratedRestaurant={ratedRestaurant}/>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   )

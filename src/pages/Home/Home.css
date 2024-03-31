@@ -40,6 +40,33 @@
   /* .area-heading {
     margin-top: 2rem;
   } */
+
+  @media screen and (max-width: 1100px) {
+
+
+    .card-container {
+      gap: 1rem;
+      justify-content: space-between;
+    }
+    
+    .restaurant-area-container {
+      width: 85%;
+      margin: 0 auto;
+      margin-top: 3rem;
+      font-family: 'SpaceGroteskBold', sans-serif;
+      /* padding: 0 1rem; */
+    }
+    
+
+  }
+  @media screen and (max-width: 700px) {
+    
+    .restaurant-area-container {
+      width: 100%;
+      padding: 0 .5rem;
+    }
+  }
+  
 }
 
 

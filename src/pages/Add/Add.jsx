@@ -47,14 +47,6 @@ const Add = () => {
     closingHours: ''
   })
 
-  // useEffect(() => {
-  //   if(!user) {
-  //     navigate('/login')
-  //   }
-
-  // }, [user, navigate])
-
-
   useEffect(() => {
     if(formData.name && formData.website) {
       setIsDisabled(false)
@@ -103,8 +95,6 @@ const Add = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    console.log('här')
-
     let websiteIsValid = true;
     try {
       new URL(formData.website);
@@ -113,14 +103,12 @@ const Add = () => {
     }
 
     if(!formData.name && !websiteIsValid) {
-      console.log('hamnar här')
       setErrorMessage('You need to enter the restaurants name')
       setErrorMessageURL('Invalid website URL')
       return
     }
 
     if (!websiteIsValid) {
-      console.error('Invalid website URL');
       setErrorMessageURL('Invalid website URL')
       return;
     }
@@ -171,6 +159,12 @@ const Add = () => {
   return (
     <div className="Add padding-top-navbar">
       <Hero header='Add Restaurant'/>
+      <p className='add-text'>
+      <b>Lunchtime hero needed!</b><br/>
+      Think you've found the best spot in town? <br/>
+      Add a restaurant below! <br/>
+      The more details you provide, the easier it will be for others to find their next favorite lunch spot.
+      </p>
       <form className="add-resturant-form">
       <p className='error'>{errorMessage && errorMessage}</p>
         <label htmlFor="name">Resturant name *

@@ -9,8 +9,12 @@
   position: relative;
   /* background-color: #fefefe; */
 
-  img {
+  .card-image {
     filter: grayscale(15%) brightness(70%);
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 1rem 1rem 0 0;
   }
 
   .rating-circle {
@@ -43,6 +47,28 @@
       color: black;
       margin-top: 1rem;
     }
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .rated-card-info {
+      padding: .5rem;
+      font-family: 'InterRegular', sans-serif;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+  
+      h2 {
+        font-family: 'SpaceGroteskBold', sans-serif;
+      }
+  
+      a {
+        color: black;
+        margin-top: 1rem;
+      }
+    }
+
+
   }
 }
 
