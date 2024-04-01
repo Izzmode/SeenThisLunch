@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react'
 
 const Register = () => {
 
+  //tbd error message follow from regsiter/login/forgot password, fix that
+
   const { user, loading, error } = useSelector(state => state.auth)
  
   const dispatch = useDispatch()
