@@ -9,12 +9,10 @@ import './RestaurantCard.css'
 const RestaurantCard = ({ restaurant, ratings }) => {
 
   const [averageRatingDisplayed, setAverageRatingDisplayed] = useState(null);
-  const [numberOfRatings, setNumberOfRatings] = useState(0);
 
   useEffect(() => {
     if (!restaurant || ratings?.length === 0) {
       setAverageRatingDisplayed(null);
-      setNumberOfRatings(0);
     } else {
       const totalRating = ratings?.reduce((acc, rating) => {
         if (typeof rating === 'number') {
@@ -25,7 +23,6 @@ const RestaurantCard = ({ restaurant, ratings }) => {
       }, 0);
       const averageRating = totalRating / ratings?.length;
       setAverageRatingDisplayed(Math.round(averageRating * 100) / 100);
-      setNumberOfRatings(ratings?.length);
     }
   }, [restaurant, ratings]);
 
@@ -43,7 +40,7 @@ const RestaurantCard = ({ restaurant, ratings }) => {
         <div className='heading-and-rating'><h2>{restaurant.name ? restaurant.name : restaurant.resturant}</h2>
         {averageRatingDisplayed !== null ? (
             <div className='rating-star'>
-              {averageRatingDisplayed.toFixed(1)} <FaStar /> {numberOfRatings}
+              {averageRatingDisplayed.toFixed(1)} <FaStar />
             </div>
           ) : (
             <div className='rating-star'>

@@ -64,6 +64,13 @@
     .restaurant-area-container {
       width: 100%;
       padding: 0 .5rem;
+      margin-top: 1rem;
+    }
+
+    .filtered-text {
+      width: 100%;
+      padding: 0 .5rem;
+      margin-bottom: .5rem;
     }
   }
   

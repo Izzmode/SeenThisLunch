@@ -136,6 +136,9 @@ const Profile = () => {
                 <RatedRestaurantCard ratedRestaurant={ratedRestaurant}/>
               </div>
             ))}
+            {combinedData.length === 0 &&
+            <p className='no-ratings-text'>You have not yet rated any restaurants.</p>
+            }
         </div>
       </div>
     </div>

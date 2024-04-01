@@ -122,11 +122,11 @@
     display: flex;
     justify-content: space-around;
     gap: 5rem;
-    font-family: 'InterRegular', sans-serif;
+    /* font-family: 'InterRegular', sans-serif; */
     margin-top: 1rem;
     padding: 2rem;
     border-radius: 1rem;
-    border: 1px solid var(--dark-orange);
+    border: 2px solid var(--dark-orange);
     /* background-color: RGB(240, 240, 240); */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);  
     background-color: var(--light-orange);
@@ -145,12 +145,12 @@
     flex-direction: column;
     font-size: 1rem;
     align-items: center;
-    font-family: 'SpaceGroteskLight', sans-serif;
+    font-family: 'SpaceGroteskBold', sans-serif;
   }
 
   .icon-star {
     font-size: 1.5rem;
-    color: rgb(198, 198, 198);
+    color: rgb(173, 173, 173);
     cursor: pointer;
     transition: transform 0.3s ease;
   }
@@ -250,10 +250,16 @@
     .contact-info {
       min-width: auto;
       width: 100%;
+      padding: 1rem;
     }
 
     .map-container {
       height: 300px;
+    }
+
+    .icon-and-number {
+      font-size: 1.1rem;
+      flex-wrap: wrap;
     }
   }
 

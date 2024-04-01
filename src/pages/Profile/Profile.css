@@ -32,6 +32,10 @@
     width: 49%;
   }
 
+  .no-ratings-text {
+    font-family: 'SpaceGroteskBold', sans-serif;
+  }
+
 
 
   @media screen and (max-width: 1130px) {

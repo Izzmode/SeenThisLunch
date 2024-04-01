@@ -204,7 +204,7 @@ const RestaurantDetails = () => {
             <div className="contact-info">
                 <h3 className='info-card-text'>{restaurant.name}</h3>
                 <p className='icon-and-number'>
-                  <FaClock/> 
+                  <FaClock className="icon"/> 
                   { restaurant.openingHours && restaurant.closingHours ?
                   <span>{restaurant.openingHours} - {restaurant.closingHours}</span>
                     :
@@ -212,7 +212,7 @@ const RestaurantDetails = () => {
                   }
                 </p>
                 <p className='icon-and-number'>
-                  <FaMapPin/> 
+                  <FaMapPin className="icon"/> 
                   { restaurant.address ?
                   <span className='info-card-text'>{restaurant.address}</span>
                   :
@@ -222,18 +222,18 @@ const RestaurantDetails = () => {
                 { restaurant.outdoorSeating &&
 
                 <p className='icon-and-number'>
-                  <FaCloudSun/> 
+                  <FaCloudSun className="icon"/> 
                   <span>Outdoor seating</span>
                 </p>
                 }
                 { restaurant.priceRange &&
                 <p className='icon-and-number'>
-                  <FaDollarSign/> 
+                  <FaDollarSign className="icon"/> 
                   <span className='info-card-text'>{restaurant.priceRange}</span>
                 </p>
                 }
                 <p className='icon-and-number'>
-                  <FaPhoneAlt/> 
+                  <FaPhoneAlt className="icon"/> 
                   { restaurant.phoneNumber ?
                   <span>{restaurant.phoneNumber}</span>
                   :
@@ -241,7 +241,7 @@ const RestaurantDetails = () => {
                 }
                 </p>
                 <p className='icon-and-number'>
-                  <MdEmail/> 
+                  <MdEmail className="icon"/> 
                   { restaurant.email ?
                   <span><a href={`mailto:${restaurant.email}`}>{restaurant.email}</a></span>
                   :
@@ -249,7 +249,7 @@ const RestaurantDetails = () => {
                 }
                 </p>
                 <p className='icon-and-number'>
-                  <FaGlobe/> 
+                  <FaGlobe className="icon"/> 
                   <span><a href={restaurant.website} target="_blank" rel="noopener noreferrer">To Restaurant Webpage</a></span>
                 </p>
             </div>
