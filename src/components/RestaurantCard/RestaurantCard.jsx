@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import defaultImage from '../../assets/default-image.jpg'
 import './RestaurantCard.css'
 
-
 const RestaurantCard = ({ restaurant, ratings }) => {
 
   const [averageRatingDisplayed, setAverageRatingDisplayed] = useState(null);
@@ -37,16 +36,17 @@ const RestaurantCard = ({ restaurant, ratings }) => {
       }}
       />
       <div className='restaurant-info'>
-        <div className='heading-and-rating'><h2>{restaurant.name ? restaurant.name : restaurant.resturant}</h2>
-        {averageRatingDisplayed !== null ? (
+        <div className='heading-and-rating'>
+          <h2>{restaurant.name ? restaurant.name : restaurant.resturant}</h2>
+            {averageRatingDisplayed !== null ? (
             <div className='rating-star'>
               {averageRatingDisplayed.toFixed(1)} <FaStar />
             </div>
-          ) : (
+            ) : (
             <div className='rating-star'>
               <FaRegStar />
               No ratings</div>
-          )}
+            )}
           </div>
         <p>{restaurant.area && restaurant.area}</p>
         <p>{restaurant.address && restaurant.address}</p>

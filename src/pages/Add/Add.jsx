@@ -79,7 +79,7 @@ const Add = () => {
         ...prev,
         [id]: !prev[id] 
       }));
-           } else {
+    } else {
       if(formData.name){
         setErrorMessage('')
       }
@@ -118,7 +118,6 @@ const Add = () => {
       setErrorMessage('You need to enter the restaurants name')
       return
     }
-
 
     if(formData.name && formData.website && websiteIsValid) {
       setErrorMessage('')
@@ -201,7 +200,7 @@ const Add = () => {
           <input type="text" id="priceRange" className='resturant-input' autoComplete="off" placeholder='150-200kr' value={formData.priceRange} onChange={handleChange}/>
         </label>
         <label htmlFor="openingHours">What time do they open for lunch?
-          <input type="time" id="openingHours" className='resturant-input' placeholder="Hammarbykaj 10d" value={formData.openingHours} onChange={handleChange}/>
+          <input type="time" id="openingHours" className='resturant-input' placeholder="Hammarby Kaj 10d" value={formData.openingHours} onChange={handleChange}/>
         </label>
         <label htmlFor="closingHours">What time do they close for lunch?
           <input type="time" id="closingHours" className='resturant-input' value={formData.closingHours} onChange={handleChange}/>

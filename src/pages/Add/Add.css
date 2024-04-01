@@ -1,12 +1,6 @@
 .Add {
   font-family: 'InterRegular', sans-serif;
 
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-  }
-
   .add-resturant-form {
     width: 50%;
     margin: 0 auto;
@@ -18,39 +12,35 @@
 
   .resturant-input {
     width: 100%;
+    height: 3rem;
     padding: .7rem;
     border-radius: 8px;
     border: 1px solid grey;
     outline: none;
-    height: 3rem;
   }
   .select-input {
     width: 100%;
-    /* padding: .7rem; */
-    border: none;
     border-radius: 8px;
-    /* border: 1px solid grey; */
+    border: none;
     outline: none;
     color: black;
+    /* padding: .7rem; */
   }
 
   .btn-submit {
-    margin-top: 1rem;
     width: 50%;
     align-self: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     padding: .7rem 0;
     border-radius: .5rem;
     border: transparent;
-    cursor: pointer;
-    color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     background-color: var(--dark-orange);
+    color: white;
     font-family: 'SpaceGroteskRegular', sans-serif;
     font-size: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  .btn-submit:active {
-    background-color: hsl(20, 100%, 60%);
+    cursor: pointer;
   }
 
   .disabled {
@@ -83,12 +73,12 @@
   }
 
   .add-text {
-    text-align: center;
     margin-top: 2rem;
+    text-align: center;
 
     h2 {
-      font-size: 1rem;
       margin-bottom: 1rem;
+      font-size: 1rem;
     }
   }
 
@@ -111,6 +101,5 @@
       padding: 0rem 1rem;
     }
   }
-
-  
+ 
 }
