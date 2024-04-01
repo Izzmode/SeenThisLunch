@@ -143,8 +143,9 @@
   .stars-wrapper {
     display: flex;
     flex-direction: column;
-    font-size: 1rem;
     align-items: center;
+    font-size: 1rem;
+    text-align: center;
     font-family: 'SpaceGroteskBold', sans-serif;
   }
 
@@ -250,7 +251,7 @@
     .contact-info {
       min-width: auto;
       width: 100%;
-      padding: 1rem;
+      padding: 1rem 0.5rem 1rem 0.9rem;
     }
 
     .map-container {

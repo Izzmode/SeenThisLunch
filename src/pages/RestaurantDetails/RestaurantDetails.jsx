@@ -72,7 +72,9 @@ const RestaurantDetails = () => {
   }, [dispatch, id]);
 
   useEffect(() => {
-    dispatch(getUserRatings({ userId: user?.uid }));
+    if (user) {
+      dispatch(getUserRatings({ userId: user.uid }));
+    }
    }, [dispatch, user]);
 
   useEffect(() => {
@@ -261,8 +263,8 @@ const RestaurantDetails = () => {
                 :
                 usersPreviousRatingOfRestaurant ?
                 <>
-                <p>You previously gave this restaurant {usersPreviousRatingOfRestaurant}/5 stars.</p>
-                <p>Do you wish to update your rating?</p>
+                <p>You previously gave this restaurant {usersPreviousRatingOfRestaurant}/5 stars.<br/>
+                Do you wish to update your rating?</p>
                 </>
                 :
                 <p>Rate your dining experience!</p>

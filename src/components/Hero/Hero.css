@@ -1,15 +1,15 @@
 .Hero {
-background-color: #ffefe7;
-height: 8rem;
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: SpaceGroteskBold, serif;
-color: #f50;
-font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffefe7;
+  height: 8rem;
+  font-family: SpaceGroteskBold, serif;
+  font-size: 4rem;
+  color: #f50;
 
-@media screen and (max-width: 700px) {
-    font-size: 2rem;
+  @media screen and (max-width: 700px) {
     height: 5rem;
+    font-size: 2rem;
   }
 }

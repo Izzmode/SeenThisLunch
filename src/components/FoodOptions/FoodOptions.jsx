@@ -5,15 +5,17 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // tbd ändra så filters blir typ foodoptions? eller bättre namn
+//tbd styling randomknapp
 const FoodOptions = ({ filters, handleChange, heading, randomRestaurantId }) => {
 
   const [rotateArrow, setRotateArrow] = useState(false)
+
   return (
-    <div className="filter-checkboxes-container">
+    <div className="FoodOptions">
       <h2 className='heading-for-filtering-food'>{heading}</h2>
-      <MdOutlineKeyboardArrowDown className={`icon-arrow-down ${rotateArrow ? 'arrow-down' : 'arrow-up'}`} onClick={() => setRotateArrow(!rotateArrow)}/>
-      <div className={`filter-checkboxes-and-btn ${rotateArrow ? '' : 'hide-checkboxes'}`}>
-        <div className="filter-checkboxes">
+      <MdOutlineKeyboardArrowDown className={`icon-arrow-down ${rotateArrow && 'arrow-down'}`} onClick={() => setRotateArrow(!rotateArrow)}/>
+      <div className={`foodoptions-and-btn ${rotateArrow ? '' : 'hide-foodoptions'}`}>
+        <div className="foodoptions-wrapper">
           <button type="button" className={filters.foodOption_Buffet ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Buffet" name="foodOption_Buffet">Buffet</button>
           <button type="button" className={filters.foodOption_Fish ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Fish" name="foodOption_Fish">Fish</button>
           <button type="button" className={filters.foodOption_Hamburger ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Hamburger">Hamburger</button>

@@ -68,10 +68,9 @@
 
 .btn-disabled {
   padding: 0.5rem 0.8rem;
-  border: 1px solid grey;
+  border: 1px solid rgb(115, 115, 115);
   background-color: white;
-  color: black;
-  color: grey;
+  color: rgb(115, 115, 115);
   border-radius: .2rem;
   font-size: 1rem;
   cursor: pointer;

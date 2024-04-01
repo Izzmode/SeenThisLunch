@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { MdLogout } from "react-icons/md";
 import { logoutUser } from '../../store/features/auth/authSlice'
@@ -15,9 +15,14 @@ const Navbar = () => {
   const [verifiedEmail, setVerifiedEmail] = useState(false);
   const [openHamburgerMenu, setOpenHamburgerMenu] = useState(false)
 
+  const closeHamburgerMenu = () => {
+    setOpenHamburgerMenu(false)
+  }
+
   const handleLogout = async () => {
     navigate('/')
     dispatch(logoutUser())
+    setOpenHamburgerMenu(false)
   }
 
   const handleToggleMenu = () => {
@@ -39,26 +44,27 @@ const Navbar = () => {
           <div className="bar"></div>
           <div className="bar"></div>
         </div>
-
+        <Link to="/">
         <div className='logo'>
           <p>SEENTHIS</p>
           <p>LUNCH</p>
         </div>
+        </Link>
         <ul className={`ul-list ${openHamburgerMenu ? 'active' : ''}`}>
           { user && !verifiedEmail &&
             <p className='not-verified-prompt'>
             To get full access, please verify your emailadress
             </p>}
-          <li className='list-item'>
+          <li className='list-item' onClick={closeHamburgerMenu}>
             <NavLink to="/">Restaurants</NavLink>
           </li>
           { user && verifiedEmail
             &&
             <>
-            <li className='list-item'>
+            <li className='list-item' onClick={closeHamburgerMenu}>
             <NavLink to="/add">Add Restaurant</NavLink>
             </li>
-          <li className='list-item'>
+          <li className='list-item' onClick={closeHamburgerMenu}>
             <NavLink to="/profile">Profile</NavLink>
           </li>
           </>
@@ -72,7 +78,7 @@ const Navbar = () => {
             </li>
             </>
             :
-            <li className='list-item'>
+            <li className='list-item' onClick={closeHamburgerMenu}>
             <NavLink to="/login">Login</NavLink>
             </li>
           }
