@@ -28,23 +28,24 @@ const Add = () => {
     email: '',
     phoneNumber: '',
     priceRange: '',
-    checkboxPizza: false,
-    checkboxFish: false,
-    checkboxPasta: false,
-    checkboxSchnitzel: false,
-    checkboxBuffet: false,
-    checkboxVegan: false,
-    checkboxVegetarian: false,
-    checkboxHamburger: false,
-    checkboxSallad: false,
-    checkboxRamen: false,
-    checkboxSushi: false,
-    checkboxTacos: false,
-    checkboxOther: false,
-    checkboxSausage: false,
+    foodOption_Buffet: false,
+    foodOption_Fish: false,
+    foodOption_Hamburger: false,
+    foodOption_Other: false,
+    foodOption_Pasta: false,
+    foodOption_Pizza: false,
+    foodOption_Ramen: false,
+    foodOption_Sallad: false,
+    foodOption_Sausage: false,
+    foodOption_Schnitzel: false,
+    foodOption_Soup: false,
+    foodOption_Sushi: false,
+    foodOption_Tacos: false,
+    foodOption_Vegan: false,
+    foodOption_Vegetarian: false,
     outdoorSeating: false,
     openingHours: '',
-    closingHours: ''
+    closingHours: '',
   })
 
   useEffect(() => {
@@ -78,7 +79,7 @@ const Add = () => {
         ...prev,
         [id]: !prev[id] 
       }));
-    } else {
+           } else {
       if(formData.name){
         setErrorMessage('')
       }

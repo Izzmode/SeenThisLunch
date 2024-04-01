@@ -20,20 +20,20 @@ const Home = () => {
   const [expandedAreas, setExpandedAreas] = useState({});
   const [startedFiltering, setStartedFiltering] = useState(false)
   const [filters, setFilters] = useState({
-    checkboxPizza: false,
-    checkboxFish: false,
-    checkboxPasta: false,
-    checkboxSchnitzel: false,
-    checkboxBuffet: false,
-    checkboxVegan: false,
-    checkboxVegetarian: false,
-    checkboxHamburger: false,
-    checkboxSallad: false,
-    checkboxRamen: false,
-    checkboxSushi: false,
-    checkboxTacos: false,
-    checkboxOther: false,
-    checkboxSausage: false,
+    foodOption_Pizza: false,
+    foodOption_Fish: false,
+    foodOption_Pasta: false,
+    foodOption_Schnitzel: false,
+    foodOption_Buffet: false,
+    foodOption_Vegan: false,
+    foodOption_Vegetarian: false,
+    foodOption_Hamburger: false,
+    foodOption_Sallad: false,
+    foodOption_Ramen: false,
+    foodOption_Sushi: false,
+    foodOption_Tacos: false,
+    foodOption_Other: false,
+    foodOption_Sausage: false,
     outdoorSeating: false,
   })
 
@@ -99,58 +99,56 @@ const Home = () => {
       });
     });
 
-  return (
-    <div className="Home padding-top-navbar">
-      <Hero header='Restaurants'/>
-      <FoodOptions filters={filters} handleChange={handleChange} heading="What should the restaurant offer?" randomRestaurantId={randomRestaurantId}/>
-      {loading && <Loader/>}
-      {error && <p>Something went wrong</p>}
-      {filteredRestaurants && (
-      <>
-      {filteredRestaurants.length > 1 && startedFiltering &&
-        <p className="filtered-text">These {filteredRestaurants.length} restaurants match your criteria!</p>
-      }
-      {filteredRestaurants.length === 1 && startedFiltering &&
-        <p className="filtered-text">This restaurant matched your criteria.</p>
-      }
-      {filteredRestaurants.length === 0 && startedFiltering &&
-        <p className="filtered-text">No restaurants matched your criteria :(</p>
-      }
-      {Object.entries(
-        filteredRestaurants.reduce((acc, restaurant) => {
-          if (!acc[restaurant.area]) {
-            acc[restaurant.area] = [];
-          }
-          acc[restaurant.area].push(restaurant);
-          return acc;
-        }, {})
-      ).map(([area, areaRestaurants]) => (
-        <div key={area} className="restaurant-area-container">
-          <h2 className="area-heading">{area}</h2>
-          <div className="card-container">
-            {areaRestaurants.slice(0, expandedAreas[area] ? areaRestaurants.length : 3).map(restaurant => (
+    // Get unique areas from filtered restaurants and sort them alphabetically
+const uniqueAreas = [...new Set(filteredRestaurants.map(restaurant => restaurant.area))].sort();
+
+return (
+  <div className="Home padding-top-navbar">
+    <Hero header='Restaurants'/>
+    <FoodOptions filters={filters} handleChange={handleChange} heading="What should the restaurant offer?" randomRestaurantId={randomRestaurantId}/>
+    {loading && <Loader/>}
+    {error && <p>Something went wrong</p>}
+    {filteredRestaurants && (
+    <>
+    {filteredRestaurants.length > 1 && startedFiltering &&
+      <p className="filtered-text">These {filteredRestaurants.length} restaurants match your criteria!</p>
+    }
+    {filteredRestaurants.length === 1 && startedFiltering &&
+      <p className="filtered-text">This restaurant matched your criteria.</p>
+    }
+    {filteredRestaurants.length === 0 && startedFiltering &&
+      <p className="filtered-text">No restaurants matched your criteria :(</p>
+    }
+    {uniqueAreas.map(area => (
+      <div key={area} className="restaurant-area-container">
+        <h2 className="area-heading">{area}</h2>
+        <div className="card-container">
+          {filteredRestaurants
+            .filter(restaurant => restaurant.area === area)
+            .slice(0, expandedAreas[area] ? filteredRestaurants.filter(restaurant => restaurant.area === area).length : 3)
+            .map(restaurant => (
               <RestaurantCard
                 restaurant={restaurant}
                 key={restaurant.id}
                 ratings={getRatingsForRestaurant(restaurant.id)}
               />
-            ))}
-          </div>
-          {areaRestaurants.length > 3 && (
-            <div className="view-more-arrow" onClick={() => toggleAreaExpansion(area)}>
-              {expandedAreas[area] ? 'Show Less' : 'Show More'}
-              {expandedAreas[area] ? 
-                <MdKeyboardArrowUp  className="icon-arrow-down"/> : 
-                <MdOutlineKeyboardArrowDown className="icon-arrow-down"/>
-              }
-            </div>
-          )}
+          ))}
         </div>
-      ))}
-      </>
-      )}
-    </div>
-  );
+        {filteredRestaurants.filter(restaurant => restaurant.area === area).length > 3 && (
+          <div className="view-more-arrow" onClick={() => toggleAreaExpansion(area)}>
+            {expandedAreas[area] ? 'Show Less' : 'Show More'}
+            {expandedAreas[area] ? 
+              <MdKeyboardArrowUp  className="icon-arrow-down"/> : 
+              <MdOutlineKeyboardArrowDown className="icon-arrow-down"/>
+            }
+          </div>
+        )}
+      </div>
+    ))}
+    </>
+    )}
+  </div>
+);
   
 }
 

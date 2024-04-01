@@ -20,35 +20,35 @@ const SimilarRestaurants = ({ restaurant, restaurants }) => {
       return false; 
   }
 
-    const checkboxesFromAllRestaurants = [];
-    const checkboxesFromThisRestaurant = [];
+    const foodOptionsFromAllRestaurants = [];
+    const foodOptionsFromThisRestaurant = [];
 
     for (const key in restaurant) {
-      if (key.startsWith('checkbox') && restaurant[key]) {
-        checkboxesFromThisRestaurant.push(key);
+      if (key.startsWith('foodOption_') && restaurant[key]) {
+        foodOptionsFromThisRestaurant.push(key);
       }
     }
     for (const key in res) {
-      if (key.startsWith('checkbox') && res[key]) {
-        checkboxesFromAllRestaurants.push(key);
+      if (key.startsWith('foodOption_') && res[key]) {
+        foodOptionsFromAllRestaurants.push(key);
       }
     }
-    const hasCommonCheckboxes = checkboxesFromThisRestaurant.some(checkbox => checkboxesFromAllRestaurants.includes(checkbox));
-    return hasCommonCheckboxes
+    const hasCommonFoodOptions = foodOptionsFromThisRestaurant.some(checkbox => foodOptionsFromAllRestaurants.includes(checkbox));
+    return hasCommonFoodOptions
    }) 
 
-  const sortByCommonCheckboxes = (a, b) => {
-    const checkboxesFromThisRestaurant = Object.keys(restaurant).filter(key => key.startsWith('checkbox') && restaurant[key]);
-    const checkboxesA = Object.keys(a).filter(key => key.startsWith('checkbox') && a[key]);
-    const checkboxesB = Object.keys(b).filter(key => key.startsWith('checkbox') && b[key]);
+  const sortByCommonFoodOptions = (a, b) => {
+    const foodOptionsFromThisRestaurant = Object.keys(restaurant).filter(key => key.startsWith('foodOption_') && restaurant[key]);
+    const foodOptionsA = Object.keys(a).filter(key => key.startsWith('foodOption_') && a[key]);
+    const foodOptionsB = Object.keys(b).filter(key => key.startsWith('foodOption_') && b[key]);
     
-    const commonCheckboxesA = checkboxesA.filter(checkbox => checkboxesFromThisRestaurant.includes(checkbox));
-    const commonCheckboxesB = checkboxesB.filter(checkbox => checkboxesFromThisRestaurant.includes(checkbox));
+    const commonFoodOptionsA = foodOptionsA.filter(foodOption => foodOptionsFromThisRestaurant.includes(foodOption));
+    const commonFoodOptionsB = foodOptionsB.filter(foodOption => foodOptionsFromThisRestaurant.includes(foodOption));
 
-    return commonCheckboxesB.length - commonCheckboxesA.length; // Sort in descending order of common checkboxes
+    return commonFoodOptionsB.length - commonFoodOptionsA.length; // Sort in descending order of common checkboxes
   };
 
-  const sortedSimilarRestaurants = similarRestaurants.sort(sortByCommonCheckboxes);
+  const sortedSimilarRestaurants = similarRestaurants.sort(sortByCommonFoodOptions);
 
    const getRatingsForRestaurant = (restaurantId) => {
     

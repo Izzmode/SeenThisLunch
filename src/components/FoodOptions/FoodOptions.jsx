@@ -4,10 +4,7 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-
 // tbd ändra så filters blir typ foodoptions? eller bättre namn
-//also ändra så det blir med understreck och det är efter det man hämtar ut namnet.
-//så foodOption_Pasta: true typ.
 const FoodOptions = ({ filters, handleChange, heading, randomRestaurantId }) => {
 
   const [rotateArrow, setRotateArrow] = useState(false)
@@ -17,19 +14,21 @@ const FoodOptions = ({ filters, handleChange, heading, randomRestaurantId }) => 
       <MdOutlineKeyboardArrowDown className={`icon-arrow-down ${rotateArrow ? 'arrow-down' : 'arrow-up'}`} onClick={() => setRotateArrow(!rotateArrow)}/>
       <div className={`filter-checkboxes-and-btn ${rotateArrow ? '' : 'hide-checkboxes'}`}>
         <div className="filter-checkboxes">
-          <button type="button" className={filters.checkboxBuffet ? 'btn' : 'btn-disabled'} onClick={handleChange} id="checkboxBuffet" name="checkboxBuffet">Buffet</button>
-          <button type="button" className={filters.checkboxFish ? 'btn' : 'btn-disabled'} onClick={handleChange} id="checkboxFish" name="checkboxFish">Fish</button>
-          <button type="button" className={filters.checkboxHamburger ? 'btn' : 'btn-disabled'} onClick={handleChange} id="checkboxHamburger">Hamburger</button>
-          <button type="button" className={filters.checkboxOther ? 'btn' : 'btn-disabled'} onClick={handleChange} id="checkboxOther">Other</button>
-          <button type="button" className={filters.checkboxPasta ? 'btn' : 'btn-disabled'} onClick={handleChange} id="checkboxPasta">Pasta</button>
-          <button type="button" className={filters.checkboxRamen ? 'btn' : 'btn-disabled'} onClick={handleChange} id="checkboxRamen">Ramen</button>
-          <button type="button" className={filters.checkboxSallad ? 'btn' : 'btn-disabled'} onClick={handleChange} id="checkboxSallad">Sallad</button>
-          <button type="button" className={filters.checkboxSausage ? 'btn' : 'btn-disabled'} onClick={handleChange} id="checkboxSausage">Sausage</button>
-          <button type="button" className={filters.checkboxSchnitzel ? 'btn' : 'btn-disabled'} onClick={handleChange} id="checkboxSchnitzel">Schnitzel</button>
-          <button type="button" className={filters.checkboxSushi ? 'btn' : 'btn-disabled'} onClick={handleChange} id="checkboxSushi">Sushi</button>
-          <button type="button" className={filters.checkboxTacos ? 'btn' : 'btn-disabled'} onClick={handleChange} id="checkboxTacos">Tacos</button>
-          <button type="button" className={filters.checkboxVegan ? 'btn' : 'btn-disabled'} onClick={handleChange} id="checkboxVegan">Vegan</button>
-          <button type="button" className={filters.checkboxVegetarian ? 'btn' : 'btn-disabled'} onClick={handleChange} id="checkboxVegetarian">Vegetarian</button>
+          <button type="button" className={filters.foodOption_Buffet ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Buffet" name="foodOption_Buffet">Buffet</button>
+          <button type="button" className={filters.foodOption_Fish ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Fish" name="foodOption_Fish">Fish</button>
+          <button type="button" className={filters.foodOption_Hamburger ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Hamburger">Hamburger</button>
+          <button type="button" className={filters.foodOption_Other ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Other">Other</button>
+          <button type="button" className={filters.foodOption_Pasta ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Pasta">Pasta</button>
+          <button type="button" className={filters.foodOption_Pizza ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Pizza">Pizza</button>
+          <button type="button" className={filters.foodOption_Ramen ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Ramen">Ramen</button>
+          <button type="button" className={filters.foodOption_Sallad ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Sallad">Sallad</button>
+          <button type="button" className={filters.foodOption_Sausage ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Sausage">Sausage</button>
+          <button type="button" className={filters.foodOption_Schnitzel ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Schnitzel">Schnitzel</button>
+          <button type="button" className={filters.foodOption_Soup ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Soup">Soup</button>
+          <button type="button" className={filters.foodOption_Sushi ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Sushi">Sushi</button>
+          <button type="button" className={filters.foodOption_Tacos ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Tacos">Tacos</button>
+          <button type="button" className={filters.foodOption_Vegan ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Vegan">Vegan</button>
+          <button type="button" className={filters.foodOption_Vegetarian ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Vegetarian">Vegetarian</button>
           <button type="button" className={filters.outdoorSeating ? 'btn' : 'btn-disabled'} onClick={handleChange} id="outdoorSeating">Outdoor Seating</button>
         </div>
         {randomRestaurantId &&

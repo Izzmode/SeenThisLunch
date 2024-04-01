@@ -36,7 +36,7 @@ const RestaurantDetails = () => {
 
   const foodOptions = Object.keys(restaurant || {}).filter(key => {
     const value = restaurant[key];
-    return typeof value === 'boolean' && key.includes('checkbox');
+    return typeof value === 'boolean' && key.includes('foodOption');
   }).map(key => ({
     name: key,
     value: restaurant[key]
@@ -47,18 +47,18 @@ const RestaurantDetails = () => {
     Buffet: <GiCook />,
     Fish: <FaFish />,
     Hamburger: <FaHamburger />,
+    Other: <MdOutlineRestaurant />,
+    Pasta: <MdDinnerDining />,
+    Pizza: <FaPizzaSlice />,
+    Ramen: <GiBowlOfRice />,
+    Sallad: <FaBowlFood />,
+    Sausage: <GiSausage />,
+    Soup: <MdOutlineFoodBank />,
+    Sushi: <GiSushis />,
+    Schnitzel: <GiSteak />,
+    Tacos: <GiTacos />,
     Vegan: <FaLeaf />,
     Vegetarian: <FaCarrot />,
-    Pizza: <FaPizzaSlice />,
-    Pasta: <MdDinnerDining />,
-    Ramen: <GiBowlOfRice />,
-    Schnitzel: <GiSteak />,
-    Buffe: <MdOutlineFoodBank />,
-    Sausage: <GiSausage />,
-    Sallad: <FaBowlFood />,
-    Sushi: <GiSushis />,
-    Tacos: <GiTacos />,
-    Other: <MdOutlineRestaurant />
   };
   
   useEffect(() => {
@@ -179,8 +179,8 @@ const RestaurantDetails = () => {
               <div className='food-options'>
                 {trueFoodOptions.map(option => (
                 <div key={option.name} className='food-option'>
-                  {foodIcons[option.name.replace('checkbox', '')]}
-                  {option.name.replace('checkbox', '')}
+                  {foodIcons[option.name.split('_')[1]]}
+                  {option.name.split('_')[1]}
                 </div>
                 ))}
               </div>
