@@ -160,7 +160,7 @@ const Add = () => {
     <div className="Add padding-top-navbar">
       <Hero header='Add Restaurant'/>
       <div className='add-text'>
-      <h2>Lunchtime hero needed!</h2>
+      <h2><b>Lunchtime hero needed!</b></h2>
       <p>Think you've found the best spot in town? <br/>
       Add a restaurant below! <br/></p>
       <p className='margin-p'>The more details you provide, the easier it will be for others to find their next favorite lunch spot.</p>

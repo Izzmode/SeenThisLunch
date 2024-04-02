@@ -43,8 +43,8 @@
     }
 
     a {
-      color: black;
       margin-top: 1rem;
+      color: black;
     }
   }
 
@@ -53,6 +53,7 @@
 
     .rated-card-info {
       padding: 1rem;
+      font-size: .9rem;
     }
 
 

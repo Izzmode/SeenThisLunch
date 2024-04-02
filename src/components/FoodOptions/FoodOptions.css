@@ -1,6 +1,6 @@
 .FoodOptions {
   width: 90%;
-  margin: 2rem auto;
+  margin: 1.5rem auto 0 auto;
   text-align: center;
 
   .heading-for-filtering-food {
@@ -22,7 +22,6 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
-    margin-bottom: 2rem;
   }
   
   .foodoptions-and-btn {
@@ -34,6 +33,10 @@
   
   .hide-foodoptions {
     display: none;
+  }
+
+  .btn-random {
+    margin-top: 2rem;
   }
   
 
