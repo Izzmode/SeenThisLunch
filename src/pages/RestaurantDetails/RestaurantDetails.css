@@ -181,14 +181,14 @@
   }
 
   .contact-info {
-    min-width: 28rem;
-    border-radius: 1rem;
-    padding: 2.5rem;
-    background-color: var(--light-orange);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 1.5rem;
+    min-width: 28rem;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    background-color: var(--light-orange);
     font-size: 1.2rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 
@@ -252,16 +252,26 @@
       min-width: auto;
       width: 100%;
       padding: 1rem 0.5rem 1rem 0.9rem;
+
+      
+      .icon-and-number {
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+
+        .icon {
+          font-size: 1rem;
+        }
+      }
+
+      h3 {
+        font-size: 1.3rem;
+      }
     }
 
     .map-container {
       height: 300px;
     }
 
-    .icon-and-number {
-      font-size: 1.1rem;
-      flex-wrap: wrap;
-    }
   }
 
 }
