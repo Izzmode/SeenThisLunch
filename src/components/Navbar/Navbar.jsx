@@ -50,7 +50,7 @@ const Navbar = () => {
             <p>LUNCH</p>
           </div>
         </Link>
-        <ul className={`ul-list ${openHamburgerMenu ? 'active' : ''}`}>
+        <ul className={`ul-list ${openHamburgerMenu ? 'openMenu' : ''}`}>
           {user && !verifiedEmail &&
           <p className='not-verified-prompt'>
             To get full access, please verify your emailadress.
