@@ -2,6 +2,12 @@ import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import markerImage from '../../assets/marker.png'
+import markerImage1 from '/Users/izabelleolofsson/projects/seenThisLunchProject/SeenThisLunch/src/assets/marker.png'
+import markerIcon from 'leaflet/dist/images/marker-icon.png'; // Import the default marker icon
+import 'leaflet/dist/images/marker-icon-2x.png'; // Fix for broken icon in some environments
+import 'leaflet/dist/images/marker-shadow.png';
+import './Map.css'
 
 const Map = ({ initialAddress, height }) => {
   const mapRef = useRef(null);
@@ -27,12 +33,22 @@ const Map = ({ initialAddress, height }) => {
             const { lat: lat2, lon: lon2 } = officeData[0];
             const distance = calculateDistance(lat1, lon1, lat2, lon2);
 
+
             // Create marker for the provided address
-            const marker = L.marker([lat1, lon1]).addTo(map);
+            const customMarkerIcon = L.icon({
+              iconUrl: markerImage,
+              iconSize: [32, 32], // Adjust the size of the marker icon as needed
+              iconAnchor: [16, 32], // Adjust the anchor point if necessary
+              popupAnchor: [0, -32],
+            });
+            
+            const marker = L.marker([lat1, lon1], { icon: customMarkerIcon }).addTo(map);
             
             // Create popup with distance information
             const popupContent = `<b>Distance from the office:</b> ${distance.toFixed(2)} km`;
+            // const popup = L.popup().setContent(popupContent);
             marker.bindPopup(popupContent).openPopup();
+            // marker.openPopup();
           }
 
           map.setView([lat1, lon1], 18); 
