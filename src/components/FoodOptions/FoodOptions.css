@@ -16,6 +16,10 @@
   .arrow-down {
     transform: rotate(-180deg);
   }
+
+  .random-link-wrapper {
+    margin-top: 2rem;
+  }
   
   .foodoptions-wrapper {
     display: flex;
@@ -35,9 +39,19 @@
     display: none;
   }
 
-  .btn-random {
-    margin-top: 2rem;
+  .test {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
   }
+
+  /* #outdoorSeating {
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+  } */
   
 
 }

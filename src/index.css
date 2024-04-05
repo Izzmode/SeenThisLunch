@@ -57,7 +57,7 @@
 .btn-light {
   padding: 0.5rem 0.8rem;
   border: transparent;
-  background-color: var(--light-orange);
+  background-color: white;
   color: var(--dark-orange);
   border: 1px solid var(--dark-orange);
   border-radius: .2rem;

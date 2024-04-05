@@ -11,8 +11,8 @@ import defaultImage from '../../assets/default-image.jpg'
 import Map from '../../components/Map/Map';
 import SimilarRestaurants from '../../components/SimilarRestaurants/SimilarRestaurants';
 import Loader from '../../components/Loader/Loader';
-import './RestaurantDetails.css';
 import InfoBox from "../../components/InfoBox/InfoBox";
+import './RestaurantDetails.css';
 
 const RestaurantDetails = () => {
   const dispatch = useDispatch();

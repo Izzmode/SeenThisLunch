@@ -122,6 +122,7 @@
     /* background-color: RGB(240, 240, 240); */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);  
     background-color: var(--light-orange);
+    background-color: white;
   }
 
   .rating-stars {

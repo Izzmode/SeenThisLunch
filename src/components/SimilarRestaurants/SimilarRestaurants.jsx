@@ -10,15 +10,15 @@ const SimilarRestaurants = ({ restaurant, restaurants }) => {
   const dispatch = useDispatch()
   const { allRatings } = useSelector(state => state.ratings)
 
-   useEffect(() => {
+  useEffect(() => {
     dispatch(getAllRatings());
-   }, []);
+  }, []);
 
   const similarRestaurants = restaurants?.filter(res => {
 
     if (res.id === restaurant?.id) {
       return false; 
-  }
+    }
 
     const foodOptionsFromAllRestaurants = [];
     const foodOptionsFromThisRestaurant = [];
@@ -33,9 +33,9 @@ const SimilarRestaurants = ({ restaurant, restaurants }) => {
         foodOptionsFromAllRestaurants.push(key);
       }
     }
-    const hasCommonFoodOptions = foodOptionsFromThisRestaurant.some(checkbox => foodOptionsFromAllRestaurants.includes(checkbox));
+    const hasCommonFoodOptions = foodOptionsFromThisRestaurant.some(option => foodOptionsFromAllRestaurants.includes(option));
     return hasCommonFoodOptions
-   }) 
+  }) 
 
   const sortByCommonFoodOptions = (a, b) => {
     const foodOptionsFromThisRestaurant = Object.keys(restaurant).filter(key => key.startsWith('foodOption_') && restaurant[key]);
@@ -45,7 +45,7 @@ const SimilarRestaurants = ({ restaurant, restaurants }) => {
     const commonFoodOptionsA = foodOptionsA.filter(foodOption => foodOptionsFromThisRestaurant.includes(foodOption));
     const commonFoodOptionsB = foodOptionsB.filter(foodOption => foodOptionsFromThisRestaurant.includes(foodOption));
 
-    return commonFoodOptionsB.length - commonFoodOptionsA.length; // Sort in descending order of common checkboxes
+    return commonFoodOptionsB.length - commonFoodOptionsA.length; // Sort in descending order of common foodoptions
   };
 
   const sortedSimilarRestaurants = similarRestaurants.sort(sortByCommonFoodOptions);

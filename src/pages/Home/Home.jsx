@@ -92,7 +92,7 @@ const Home = () => {
   };
   generateRandomRestaurantId()
 
-    //checks restaurants if their checkbox values are true/false and match with the ones that user filtered
+    //checks restaurants if their foodoptions values are true/false and match with the ones that user filtered
     const filteredRestaurants = restaurants.filter(restaurant => {
       return Object.entries(filters).every(([filterName, filterValue]) => {
         return !filterValue || restaurant[filterName];
@@ -110,7 +110,13 @@ const Home = () => {
 return (
   <div className="Home padding-top-navbar">
     <Hero header='Restaurants'/>
-    <FoodOptions filters={filters} handleChange={handleChange} heading="What should the restaurant offer?" randomRestaurantId={randomRestaurantId}/>
+    <FoodOptions 
+    filters={filters} 
+    handleChange={handleChange} 
+    heading="What should the restaurant offer?" 
+    randomRestaurantId={randomRestaurantId}
+    showSeatingCheckbox={true}
+    />
     {loading && <Loader/>}
     {error && <p>Something went wrong</p>}
     {filteredRestaurants && (

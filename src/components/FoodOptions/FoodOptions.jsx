@@ -1,13 +1,15 @@
 import './FoodOptions.css'
 import { useState } from 'react'
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { FaCloudSun } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Checkbox from '../../components/Checkbox/Checkbox'
 
 // tbd ändra så filters blir typ foodoptions? eller bättre namn
 //tbd styling randomknapp
 //tbd lägg till "onlyFood" parameter? i så fall dölj outdoor seating (tex vid add)
-const FoodOptions = ({ filters, handleChange, heading, randomRestaurantId }) => {
+const FoodOptions = ({ filters, handleChange, heading, randomRestaurantId, showSeatingCheckbox }) => {
 
   const [rotateArrow, setRotateArrow] = useState(false)
 
@@ -16,6 +18,13 @@ const FoodOptions = ({ filters, handleChange, heading, randomRestaurantId }) => 
       <h2 className='heading-for-filtering-food'>{heading}</h2>
       <MdOutlineKeyboardArrowDown className={`icon-arrow-down ${rotateArrow && 'arrow-down'}`} onClick={() => setRotateArrow(!rotateArrow)}/>
       <div className={`foodoptions-and-btn ${rotateArrow ? '' : 'hide-foodoptions'}`}>
+         { showSeatingCheckbox &&
+          <div className='test'>
+          {/* <button type="button" className={filters.outdoorSeating ? 'btn' : 'btn-disabled'} onClick={handleChange} id="outdoorSeating">Outdoor Seating <FaCloudSun/></button> */}
+
+          <Checkbox label="The restaurant should offer outdoor seating" handleChange={handleChange} id="outdoorSeating" initState={false}/>
+          </div>
+          }
         <div className="foodoptions-wrapper">
           <button type="button" className={filters.foodOption_Buffet ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Buffet" name="foodOption_Buffet">Buffet</button>
           <button type="button" className={filters.foodOption_Fish ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Fish" name="foodOption_Fish">Fish</button>
@@ -32,14 +41,17 @@ const FoodOptions = ({ filters, handleChange, heading, randomRestaurantId }) => 
           <button type="button" className={filters.foodOption_Tacos ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Tacos">Tacos</button>
           <button type="button" className={filters.foodOption_Vegan ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Vegan">Vegan</button>
           <button type="button" className={filters.foodOption_Vegetarian ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Vegetarian">Vegetarian</button>
-          <button type="button" className={filters.outdoorSeating ? 'btn' : 'btn-disabled'} onClick={handleChange} id="outdoorSeating">Outdoor Seating</button>
+          {/* <button type="button" className={filters.outdoorSeating ? 'btn' : 'btn-disabled'} onClick={handleChange} id="outdoorSeating">Outdoor Seating</button> */}
         </div>
         {randomRestaurantId &&
-        <Link to={`/restaurants/${randomRestaurantId}`}>
-          <button className="btn-light btn-random">
-          Can't decide? Discover a random restaurant!
-          </button>
-        </Link>}
+        <div className='random-link-wrapper'>
+          <Link to={`/restaurants/${randomRestaurantId}`}>
+            <button className="btn-light btn-random">
+            Can't decide? Discover a random restaurant!
+            </button>
+          </Link>
+        </div>
+        }
       </div>
     </div>
   )
