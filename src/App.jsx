@@ -3,8 +3,6 @@ import Navbar from "./components/Navbar/Navbar"
 import Home from "./pages/Home/Home"
 import Add from "./pages/Add/Add"
 import RestaurantDetails from "./pages/RestaurantDetails/RestaurantDetails"
-import Login from "./pages/Login/Login"
-import Register from "./pages/Register/Register"
 import { useEffect } from "react"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "./firebase/config"
@@ -12,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { authReady } from "./store/features/auth/authSlice"
 import Profile from "./pages/Profile/Profile"
 import ProtectedRoute from "./ProtectedRoutes/ProtectedRoute"
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword"
 
 function App() {
 
@@ -48,11 +45,7 @@ function App() {
           <Add/>
         </ProtectedRoute>
       } />
-      <Route path="/restaurants/:id" element={<RestaurantDetails/>} />
-      <Route path="/register" element={<Register/>} />
-      <Route path="/login" element={<Login/>} />
-      <Route path="/forgot-password" element={<ForgotPassword/>} />
-      
+      <Route path="/restaurants/:id" element={<RestaurantDetails/>} />      
       <Route path="/profile" element={
         <ProtectedRoute>
           <Profile/>

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
-import { MdDinnerDining, MdEmail, MdOutlineFoodBank, MdOutlineRestaurant } from "react-icons/md";
+import { MdDinnerDining, MdOutlineFoodBank, MdOutlineRestaurant } from "react-icons/md";
 import { GiBowlOfRice, GiSteak, GiSausage, GiSushis, GiTacos, GiCook } from "react-icons/gi";
-import { FaRegStar, FaFish, FaStar, FaUser, FaDollarSign, FaCloudSun, FaClock, FaHamburger, FaLeaf, FaCarrot, FaPizzaSlice, FaMapPin, FaPhoneAlt, FaGlobe } from 'react-icons/fa';
+import { FaRegStar, FaFish, FaStar, FaHamburger, FaLeaf, FaCarrot, FaPizzaSlice } from 'react-icons/fa';
 import { FaBowlFood } from "react-icons/fa6";
 import { getRestaurant, getRestaurants } from "../../store/features/restaurants/restaurantSlice";
 import { addRating, getRatingsByRestaurant, getUserRatings } from '../../store/features/ratings/ratingsSlice';
@@ -12,6 +12,7 @@ import Map from '../../components/Map/Map';
 import SimilarRestaurants from '../../components/SimilarRestaurants/SimilarRestaurants';
 import Loader from '../../components/Loader/Loader';
 import './RestaurantDetails.css';
+import InfoBox from "../../components/InfoBox/InfoBox";
 
 const RestaurantDetails = () => {
   const dispatch = useDispatch();
@@ -65,11 +66,8 @@ const RestaurantDetails = () => {
     dispatch(getRestaurant({ collection: 'restaurants', id }))
     .then(() => setInitialLoad(false))
     .catch(() => setInitialLoad(false))
+    dispatch(getRatingsByRestaurant({ restaurantId: id }));
   }, [dispatch, id])
-
-  useEffect(() => {
-   dispatch(getRatingsByRestaurant({ restaurantId: id }));
-  }, [dispatch, id]);
 
   useEffect(() => {
     if (user) {
@@ -156,8 +154,7 @@ const RestaurantDetails = () => {
           }}
           alt='Picture of food'
           />
-          <h2 className='image-text'>{restaurant.name} {restaurant.area && restaurant.area}</h2>
-          {/* <h3 className='image-text-area'>{restaurant.area && restaurant.area}</h3> */}
+          <h2 className='image-text'>{restaurant.name} {restaurant.area && restaurant.area !== 'Other' && restaurant.area}</h2>
           <div className="current-rating">
             {averageRatingDisplayed !== null && !initialLoad ? (
             <div className='inner-current-rating'>
@@ -170,7 +167,7 @@ const RestaurantDetails = () => {
               </div> 
             </div>
             ) : (
-            <div>These are not the ratings you're looking for</div>
+            <div className="no-ratings"><FaRegStar/> No ratings</div>
             )} 
           </div>
         </div>
@@ -203,100 +200,49 @@ const RestaurantDetails = () => {
               }
 
             <div className="contact-container">
-            <div className="contact-info">
-                <h3 className='info-card-text'>{restaurant.name}</h3>
-                <p className='icon-and-number'>
-                  <FaClock className="icon"/> 
-                  { restaurant.openingHours && restaurant.closingHours ?
-                  <span>{restaurant.openingHours} - {restaurant.closingHours}</span>
-                    :
-                    <span className='info-card-text'>Opening hours are not registered</span>
+              <InfoBox restaurant={restaurant && restaurant}/>
+              { user && verifiedEmail &&
+              <div className="ratings-container">
+                <div className="stars-wrapper">
+                  {thankYouForRating ? 
+                  <p>Thank you for your rating!</p>
+                  :
+                  usersPreviousRatingOfRestaurant ?
+                  <>
+                  <p>You previously gave this restaurant {usersPreviousRatingOfRestaurant}/5 stars.<br/>
+                  Do you wish to update your rating?</p>
+                  </>
+                  :
+                  <p>Rate your dining experience!</p>
                   }
-                </p>
-                <p className='icon-and-number'>
-                  <FaMapPin className="icon"/> 
-                  { restaurant.address ?
-                  <span className='info-card-text'>{restaurant.address}</span>
-                  :
-                  <span>No address is registered</span>
-                }
-                </p>
-                { restaurant.outdoorSeating &&
 
-                <p className='icon-and-number'>
-                  <FaCloudSun className="icon"/> 
-                  <span>Outdoor seating</span>
-                </p>
-                }
-                { restaurant.priceRange &&
-                <p className='icon-and-number'>
-                  <FaDollarSign className="icon"/> 
-                  <span className='info-card-text'>{restaurant.priceRange}</span>
-                </p>
-                }
-                <p className='icon-and-number'>
-                  <FaPhoneAlt className="icon"/> 
-                  { restaurant.phoneNumber ?
-                  <span>{restaurant.phoneNumber}</span>
-                  :
-                  <span>No phone number is registered</span>
-                }
-                </p>
-                <p className='icon-and-number'>
-                  <MdEmail className="icon"/> 
-                  { restaurant.email ?
-                  <span><a href={`mailto:${restaurant.email}`}>{restaurant.email}</a></span>
-                  :
-                  <span>No email is registered</span>
-                }
-                </p>
-                <p className='icon-and-number'>
-                  <FaGlobe className="icon"/> 
-                  <span><a href={restaurant.website} target="_blank" rel="noopener noreferrer">To Restaurant Webpage</a></span>
-                </p>
-            </div>
-                { user && verifiedEmail &&
-            <div className="ratings-container">
-              <div className="stars-wrapper">
-                {thankYouForRating ? 
-                <p>Thank you for your rating!</p>
-                :
-                usersPreviousRatingOfRestaurant ?
-                <>
-                <p>You previously gave this restaurant {usersPreviousRatingOfRestaurant}/5 stars.<br/>
-                Do you wish to update your rating?</p>
-                </>
-                :
-                <p>Rate your dining experience!</p>
-                }
-
-                <div className='rating-stars'>
-                  {[5, 4, 3, 2, 1].map((starIndex) => (
-                    usersPreviousRatingOfRestaurant ? (
-                      <FaStar
-                        key={starIndex}
-                        className={`icon icon-star icon-star-full ${
-                          hoveredIndex !== null && hoveredIndex >= starIndex || (starIndex <= ratedValue) ? 'yellow' : ''
-                        }`}
-                        onMouseEnter={() => handleMouseEnter(starIndex)}
-                        onMouseLeave={handleMouseLeave}
-                        onClick={() => handleRating(starIndex)}
-                      />
-                    ) : (
-                      <FaRegStar
-                        key={starIndex}
-                        className={`icon icon-star ${
-                          hoveredIndex !== null && hoveredIndex >= starIndex || (starIndex <= ratedValue) ? 'yellow' : ''
-                        }`}
-                        onMouseEnter={() => handleMouseEnter(starIndex)}
-                        onMouseLeave={handleMouseLeave}
-                        onClick={() => handleRating(starIndex)} 
-                      />
-                    )
-                  ))}
+                  <div className='rating-stars'>
+                    {[5, 4, 3, 2, 1].map((starIndex) => (
+                      usersPreviousRatingOfRestaurant ? (
+                        <FaStar
+                          key={starIndex}
+                          className={`icon icon-star icon-star-full ${
+                            hoveredIndex !== null && hoveredIndex >= starIndex || (starIndex <= ratedValue) ? 'yellow' : ''
+                          }`}
+                          onMouseEnter={() => handleMouseEnter(starIndex)}
+                          onMouseLeave={handleMouseLeave}
+                          onClick={() => handleRating(starIndex)}
+                        />
+                      ) : (
+                        <FaRegStar
+                          key={starIndex}
+                          className={`icon icon-star ${
+                            hoveredIndex !== null && hoveredIndex >= starIndex || (starIndex <= ratedValue) ? 'yellow' : ''
+                          }`}
+                          onMouseEnter={() => handleMouseEnter(starIndex)}
+                          onMouseLeave={handleMouseLeave}
+                          onClick={() => handleRating(starIndex)} 
+                        />
+                      )
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </div>}
+              </div>}
             </div>
           </div>
         </div>

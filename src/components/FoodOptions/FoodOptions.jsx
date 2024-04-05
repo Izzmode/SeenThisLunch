@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 // tbd ändra så filters blir typ foodoptions? eller bättre namn
 //tbd styling randomknapp
+//tbd lägg till "onlyFood" parameter? i så fall dölj outdoor seating (tex vid add)
 const FoodOptions = ({ filters, handleChange, heading, randomRestaurantId }) => {
 
   const [rotateArrow, setRotateArrow] = useState(false)

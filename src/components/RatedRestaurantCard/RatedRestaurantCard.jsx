@@ -3,25 +3,9 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import defaultImage from '../../assets/default-image.jpg'
 import './RatedRestaurantCard.css'
+import { formatDate } from '../../helper';
 
 const RatedRestaurantCard = ({ ratedRestaurant }) => {
-
-  //move to helper?
-  const formatDate = (createdAt) => {
-    const date = new Date(createdAt);
-    const options = { day: 'numeric', month: 'long', year: 'numeric' };
-    const formattedDate = date.toLocaleDateString('en-US', options);
-    let day = date.getDate();
-    let suffix = 'th';
-    if (day === 1 || day === 21 || day === 31) {
-      suffix = 'st';
-    } else if (day === 2 || day === 22) {
-      suffix = 'nd';
-    } else if (day === 3 || day === 23) {
-      suffix = 'rd';
-    }
-    return formattedDate.replace(/\b\d+\b/, `${day}${suffix}`);
-  };
 
   return (
     <div className='RatedRestaurantCard'>
@@ -49,8 +33,8 @@ const RatedRestaurantCard = ({ ratedRestaurant }) => {
           <p>This place did not meet your expectations at all unfortunately.</p>
         }
         
-        <p>On {formatDate(ratedRestaurant.createdAt)} you gave it {ratedRestaurant.rating} 
-        {ratedRestaurant.rating == 1 ? ' star.' : ' stars.'}</p>
+        <p>On {formatDate(ratedRestaurant.createdAt)} you gave it <b>{ratedRestaurant.rating}
+        {ratedRestaurant.rating == 1 ? ' star.' : ' stars.'}</b></p>
 
         <Link to={`/restaurants/${ratedRestaurant.id}`}> Go to restaurant</Link>
       </div>

@@ -26,6 +26,7 @@
 
   .list-item {
     list-style-type: none;
+    cursor: pointer;
   }
 
   .list-item-logout {

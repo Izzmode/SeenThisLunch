@@ -4,11 +4,16 @@ import { MdLogout } from "react-icons/md";
 import { logoutUser } from '../../store/features/auth/authSlice'
 import './Navbar.css'
 import { useEffect, useState } from 'react';
-
+import { openLoginModal } from '../../store/features/modal/modalSlice'
+import Login from '../../pages/Login/Login';
+import ForgotPassword from '../../pages/ForgotPassword/ForgotPassword';
+import Register from '../../pages/Register/Register';
 
 const Navbar = () => {
 
   const { user } = useSelector(state => state.auth)
+  const { loginModalOpen, forgotPasswordModalOpen, registerModalOpen } = useSelector(state => state.modal)
+  
   const dispatch = useDispatch()
   const navigate = useNavigate();
 
@@ -36,8 +41,16 @@ const Navbar = () => {
     }
   }, [user]);
 
+  const handleOpenLogin = () => {
+    dispatch(openLoginModal())
+    setOpenHamburgerMenu(false)
+  }
+
   return (
     <nav className="Navbar">
+      {loginModalOpen && <Login/>}
+      {forgotPasswordModalOpen && <ForgotPassword/>}
+      {registerModalOpen && <Register/>}
       <div className="container">
         <div className={`hamburger-menu ${openHamburgerMenu ? 'openMenu' : ''}`} onClick={handleToggleMenu}>
           <div className="bar"></div>
@@ -76,8 +89,8 @@ const Navbar = () => {
               Logout <span className='logout-icon'><MdLogout /></span>
             </li>
             :
-            <li className='list-item' onClick={closeHamburgerMenu}>
-              <NavLink to="/login">Login</NavLink>
+            <li className='list-item' onClick={handleOpenLogin}>
+              Login
             </li>
           }
         </ul>

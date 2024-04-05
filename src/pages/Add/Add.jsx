@@ -11,7 +11,6 @@ import FoodOptions from '../../components/FoodOptions/FoodOptions'
 const Add = () => {
   //TBD ta bort checkbox? ta bort outdoor seating från foodoptions? ändra namn på foodoptions?
 
-  const { user } = useSelector(state => state.auth)
   const { error } = useSelector(state => state.restaurants)
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -19,6 +18,7 @@ const Add = () => {
   const [isDisabled, setIsDisabled] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
   const [errorMessageURL, setErrorMessageURL] = useState('')
+  const [errorMessageArea, setErrorMessageArea] = useState('')
   const [formData, setFormData] = useState({
     name: '',
     website: '',
@@ -103,9 +103,10 @@ const Add = () => {
       websiteIsValid = false;
     }
 
-    if(!formData.name && !websiteIsValid) {
+    if(!formData.name && !websiteIsValid && !formData.area) {
       setErrorMessage('You need to enter the restaurants name')
       setErrorMessageURL('Invalid website URL')
+      setErrorMessageArea('You need to select an area')
       return
     }
 
@@ -119,9 +120,15 @@ const Add = () => {
       return
     }
 
-    if(formData.name && formData.website && websiteIsValid) {
+    if(!formData.area) {
+      setErrorMessageArea('You need to select an area')
+      return
+    }
+
+    if(formData.name && formData.website && websiteIsValid && formData.area) {
       setErrorMessage('')
       setErrorMessageURL('')
+      setErrorMessageArea('')
       dispatch(addRestaurant(formData))
       .then(() => {
         navigate('/');
@@ -153,7 +160,8 @@ const Add = () => {
   const areaOptions = [
     { value: 'Hammarby Sjöstad', label: 'Hammarby Sjöstad' },
     { value: 'Skanstull', label: 'Skanstull' },
-    { value: 'Medborgarplatsen', label: 'Medborgarplatsen' }
+    { value: 'Medborgarplatsen', label: 'Medborgarplatsen' },
+    { value: 'Other', label: 'Other' }
   ];
 
   return (
@@ -177,7 +185,8 @@ const Add = () => {
         <label htmlFor="imageURL">Image URL
           <input type="text" id="imageURL" className='resturant-input' autoComplete="off" value={formData.imageURL} onChange={handleChange}/>
         </label>
-        <label htmlFor="area">Area
+        <p className='error'>{errorMessageArea && errorMessageArea}</p>
+        <label htmlFor="area">Area *
           <Select
             id="area"
             value={areaOptions.find(option => option.value === formData.area)}

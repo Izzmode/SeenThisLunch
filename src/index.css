@@ -80,3 +80,7 @@
 .btn:active {
   background-color: hsl(20, 100%, 60%);
 }
+
+.btn-close-modal {
+  width: 10rem;
+}

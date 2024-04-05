@@ -1,16 +1,17 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { resetPassword } from '../../store/features/auth/authSlice'
+import { resetPassword, setError } from '../../store/features/auth/authSlice'
 import ConfirmationModal from '../../components/Modals/ConfirmationModal'
+import { closeModal, openLoginModal, openConfirmationModal } from '../../store/features/modal/modalSlice'
 import './ForgotPassword.css'
 
 const ForgotPassword = () => {
 
-    const { user, loading, error } = useSelector(state => state.auth)
-    const navigate = useNavigate();
+    const { loading, error } = useSelector(state => state.modal)
+    const { confirmationModalOpen } = useSelector(state => state.modal)
+
+
     const dispatch = useDispatch()
-    const [showModal, setShowModal] = useState(false)
     const [formData, setFormData] = useState({
       email: '', 
     })
@@ -27,13 +28,28 @@ const ForgotPassword = () => {
       e.preventDefault()
       await dispatch(resetPassword(formData.email))
       if(formData.email) {
-        setShowModal(true)
+        // dispatch(closeModal())
+        dispatch(openConfirmationModal())
       }
+    }
+
+    useEffect(() => {
+      dispatch(setError(''))
+    }, [])
+
+    const handleCloseModal = () => {
+      dispatch(closeModal())
+    }
+
+    const handleOpenLoginModal = () => {
+        dispatch(closeModal())
+        dispatch(openLoginModal())
     }
 
   return (
     <div className='ForgotPassword padding-top-navbar'>
-       { showModal && <ConfirmationModal setShowModal={setShowModal} text="Check your inbox for an email!"/> }
+       { confirmationModalOpen && <ConfirmationModal text="Check your inbox for an email!"/> }
+       <div className='btn-and-form'>
       <div className='form-container'>
         <h1>Reset Password</h1>
         <form noValidate className='reset-form'>
@@ -41,9 +57,16 @@ const ForgotPassword = () => {
           <input type="email" className='form-control' id="email" value={formData.email} onChange={handleChange}/>
           {loading && <p>Loading...</p>}
           {error && <p>{error}</p>}
-          <div className='link-to-login'><Link to="/login">Go back to login</Link></div>
+          <div 
+          className='link-to-login' 
+          onClick={handleOpenLoginModal}
+          >
+            Go back to login
+          </div>
           <button className='btn' onClick={handleReset}>Reset Password</button>
         </form>
+      </div>
+      <button className="btn btn-close-modal" onClick={handleCloseModal}>Close</button>
       </div>
     </div>
   )

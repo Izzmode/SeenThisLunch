@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { loginUser } from '../../store/features/auth/authSlice'
+import { loginUser, setError } from '../../store/features/auth/authSlice'
+import { closeModal, openForgotPasswordModal, openRegisterModal } from '../../store/features/modal/modalSlice'
+
 import './Login.css'
 
 const Login = () => {
-  //TBD gör till modal? logga in krav för allt?
+  // logga in krav för allt?
+  //vad för typ av felmeddelanden?
 
   const { user, loading, error } = useSelector(state => state.auth)
-  const navigate = useNavigate();
+
   const dispatch = useDispatch()
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({
@@ -31,25 +34,57 @@ const Login = () => {
   }
 
   useEffect(() => {
+    dispatch(setError(''))
+  }, [])
+
+  useEffect(() => {
     if(user && submitted) {
-      navigate('/')
+      dispatch(closeModal())
     }
   }, [submitted, user])
 
+  const handleCloseModal = () => {
+    dispatch(closeModal())
+  }
+
+  const handleOpenModal = (modal) => {
+    if(modal === 'forgot') {
+      dispatch(closeModal())
+      dispatch(openForgotPasswordModal())
+    }else if(modal === 'register'){
+      dispatch(closeModal())
+      dispatch(openRegisterModal())
+    }
+  }
+
   return (
     <div className='Login padding-top-navbar'>
-      <div className='login-form-container'>
-        <p className='register-link'>Don't have an account? <Link to="/register">Register</Link></p>
-        <form noValidate className='login-form'>
-          <label htmlFor="email">Email</label>
-          <input type="email" className='form-control' id="email" value={formData.email} onChange={handleChange}/>
-          <label htmlFor="password">Password</label>
-          <input type="password" className='form-control' id="password" value={formData.password} onChange={handleChange}/>
-          {loading && <p>Loading...</p>}
-            {error && <p>{error}</p>}
-            <div><Link to="/forgot-password">Forgot password?</Link></div>
-          <button className='btn' onClick={handleLogin}>Log in to your account</button>
-        </form>
+      <div className='btn-and-form'>
+        <div className='login-form-container'>
+          <p className='register-link'>Don't have an account?  
+            <span 
+            onClick={() => handleOpenModal('register')}
+            className='underline'>
+              Register
+            </span>
+          </p>
+          <form noValidate className='login-form'>
+            <label htmlFor="email">Email</label>
+            <input type="email" className='form-control' id="email" value={formData.email} onChange={handleChange}/>
+            <label htmlFor="password">Password</label>
+            <input type="password" className='form-control' id="password" value={formData.password} onChange={handleChange}/>
+            {loading && <p>Loading...</p>}
+              {error && <p>{error}</p>}
+              <div 
+              onClick={() => handleOpenModal('forgot')}
+              className='forgot-password'
+              >
+                Forgot password?
+              </div>
+            <button className='btn' onClick={handleLogin}>Log in to your account</button>
+          </form>
+        </div>
+        <button className="btn btn-close-modal" onClick={handleCloseModal}>Close</button>
       </div>
     </div>
   )

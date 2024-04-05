@@ -99,8 +99,13 @@ const Home = () => {
       });
     });
 
-    // Get unique areas from filtered restaurants and sort them alphabetically
-const uniqueAreas = [...new Set(filteredRestaurants.map(restaurant => restaurant.area))].sort();
+    // Get unique areas from filtered restaurants and sort them alphabetically (except for other)
+  const uniqueAreas = [...new Set(filteredRestaurants.map(restaurant => restaurant.area))].sort((a, b) => {
+    if (a === "Other") return 1; 
+    if (b === "Other") return -1; 
+    return a.localeCompare(b); 
+});
+
 
 return (
   <div className="Home padding-top-navbar">

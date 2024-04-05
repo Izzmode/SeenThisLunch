@@ -1,8 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom'
-import './Register.css'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { registerUser, setError } from '../../store/features/auth/authSlice'
 import { useEffect, useState } from 'react'
+import { registerUser, setError } from '../../store/features/auth/authSlice'
+import { closeModal, openLoginModal } from '../../store/features/modal/modalSlice'
+import './Register.css'
+
 
 const Register = () => {
 
@@ -28,6 +30,11 @@ const Register = () => {
     }))
   }
 
+  useEffect(() => {
+    dispatch(setError(''))
+  }, [])
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     if(formData.password != formData.confirmPassword) {
@@ -49,10 +56,26 @@ const Register = () => {
     }
   }, [submitted, user])
 
+  const handleCloseModal = () => {
+    dispatch(closeModal())
+  }
+
+  const handleOpenLoginModal = () => {
+    dispatch(closeModal())
+    dispatch(openLoginModal())
+  }
+
   return (
     <div className='Register padding-top-navbar'>
+      <div className='btn-and-form'>
       <div className="register-form-container">
-      <p>Already registered? <Link to="/login">Login</Link></p>
+      <p>Already registered?
+        <span 
+        onClick={handleOpenLoginModal}
+        className='underline'>
+          Login
+        </span>
+      </p>
       <form noValidate className='register-form'>
         <label htmlFor="email">Email</label>
         <input type="email" className='form-control' id="email" value={formData.email} onChange={handleChange}/>
@@ -64,6 +87,8 @@ const Register = () => {
         {error && <p>{error}</p>}
         <button className='btn' onClick={handleSubmit}>Register</button>
       </form>
+      </div>
+      <button className="btn btn-close-modal" onClick={handleCloseModal}>Close</button>
       </div>
     </div>
   )
