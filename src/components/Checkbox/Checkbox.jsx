@@ -3,7 +3,6 @@ import { useState } from 'react'
 import PropTypes from 'prop-types';
 
 const Checkbox = ({ label, initState, handleChange, id}) => {
-  //tbd is this needed?
 
   const [isChecked, setIsChecked] = useState(initState);
 

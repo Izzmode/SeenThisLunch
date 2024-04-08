@@ -7,13 +7,14 @@ import Select from 'react-select';
 import Hero from '../../components/Hero/Hero'
 import Checkbox from '../../components/Checkbox/Checkbox'
 import FoodOptions from '../../components/FoodOptions/FoodOptions'
+import { customStyles, areaOptions } from '../../helper'
 
 const Add = () => {
-  //TBD ta bort checkbox? ta bort outdoor seating från foodoptions? ändra namn på foodoptions?
 
-  const { error } = useSelector(state => state.restaurants)
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const { error } = useSelector(state => state.restaurants)
 
   const [isDisabled, setIsDisabled] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
@@ -139,30 +140,6 @@ const Add = () => {
     }
 
   }
-
-  const customStyles = {
-    control: (provided, state) => ({
-      ...provided,
-      border: state.isFocused ? '1px solid grey' : '1px solid grey', 
-      height: '3rem',
-      boxShadow: 'none', 
-      '&:hover': {
-        borderColor: 'grey',
-      }
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      backgroundColor: state.isSelected ? '#ffccb3;' : state.isFocused ? '#ffefe7' : 'transparent', 
-      color: state.isSelected ? '#000000' : '#000000',
-    }),
-  };
-
-  const areaOptions = [
-    { value: 'Hammarby Sjöstad', label: 'Hammarby Sjöstad' },
-    { value: 'Skanstull', label: 'Skanstull' },
-    { value: 'Medborgarplatsen', label: 'Medborgarplatsen' },
-    { value: 'Other', label: 'Other' }
-  ];
 
   return (
     <div className="Add padding-top-navbar">

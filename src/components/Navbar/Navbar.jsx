@@ -1,21 +1,21 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { MdLogout } from "react-icons/md";
-import { logoutUser } from '../../store/features/auth/authSlice'
-import './Navbar.css'
 import { useEffect, useState } from 'react';
+import { logoutUser } from '../../store/features/auth/authSlice'
 import { openLoginModal } from '../../store/features/modal/modalSlice'
 import Login from '../../pages/Login/Login';
 import ForgotPassword from '../../pages/ForgotPassword/ForgotPassword';
 import Register from '../../pages/Register/Register';
+import './Navbar.css'
 
 const Navbar = () => {
-
-  const { user } = useSelector(state => state.auth)
-  const { loginModalOpen, forgotPasswordModalOpen, registerModalOpen } = useSelector(state => state.modal)
   
   const dispatch = useDispatch()
   const navigate = useNavigate();
+
+  const { user } = useSelector(state => state.auth)
+  const { loginModalOpen, forgotPasswordModalOpen, registerModalOpen } = useSelector(state => state.modal)
 
   const [verifiedEmail, setVerifiedEmail] = useState(false);
   const [openHamburgerMenu, setOpenHamburgerMenu] = useState(false)

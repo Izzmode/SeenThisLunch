@@ -3,10 +3,16 @@
   width: 100vw;
   height: 100%;
   background-color:#13131397;
-   /* map is 1000 */
-   z-index: 1002;
-   margin: 0 auto;
-   color: black;
+  /* map is 1000 */
+  z-index: 1002;
+  margin: 0 auto;
+  color: black;
+
+  .btn-and-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } 
 
   .login-form-container {
     width: 50%;
@@ -24,11 +30,12 @@
     flex-direction: column;
   }
 
-  .btn-and-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  } 
+  .form-control {
+    padding: .8rem;
+    border: 1px solid var(--dark-orange);
+    border-radius: .2rem;
+    outline: none;
+  }
 
   .underline {
     text-decoration: underline;
@@ -40,13 +47,6 @@
     text-decoration: underline;
     cursor: pointer;
     margin-top: 0.5rem;
-  }
-
-  .form-control {
-    padding: .8rem;
-    border: 1px solid var(--dark-orange);
-    border-radius: .2rem;
-    outline: none;
   }
 
   label {

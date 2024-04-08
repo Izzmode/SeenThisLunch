@@ -2,7 +2,6 @@ import './InfoBox.css'
 import { MdEmail } from "react-icons/md";
 import { FaDollarSign, FaCloudSun, FaClock, FaMapPin, FaPhoneAlt, FaGlobe } from 'react-icons/fa';
 
-
 const InfoBox = ({restaurant}) => {
   return (
       <div className="InfoBox">

@@ -2,8 +2,8 @@
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import defaultImage from '../../assets/default-image.jpg'
-import './RatedRestaurantCard.css'
 import { formatDate } from '../../helper';
+import './RatedRestaurantCard.css'
 
 const RatedRestaurantCard = ({ ratedRestaurant }) => {
 
@@ -44,6 +44,6 @@ const RatedRestaurantCard = ({ ratedRestaurant }) => {
 
 RatedRestaurantCard.propTypes = {
   ratedRestaurant: PropTypes.object,
-  }
+}
 
 export default RatedRestaurantCard

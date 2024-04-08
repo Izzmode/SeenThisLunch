@@ -7,6 +7,7 @@ import Select from 'react-select';
 import RatedRestaurantCard from '../../components/RatedRestaurantCard/RatedRestaurantCard';
 import Hero from '../../components/Hero/Hero';
 import Loader from '../../components/Loader/Loader';
+import { customStyles, sortingOptions } from '../../helper'
 import './Profile.css'
 
 const Profile = () => {
@@ -20,28 +21,6 @@ const Profile = () => {
   const restaurantsIds = userRatings?.map(val => val.restaurant);
   const [previousRestaurantsIds, setPreviousRestaurantsIds] = useState([]);
   const [sortRatedRestaurantsBy, setSortRatedRestaurantsBy] = useState('created')
-
-  const customStyles = {
-    control: (provided, state) => ({
-      ...provided,
-      border: state.isFocused ? '1px solid grey' : '1px solid grey', 
-      height: '2rem',
-      boxShadow: 'none', 
-      '&:hover': {
-        borderColor: 'grey',
-      }
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      backgroundColor: state.isSelected ? '#ffccb3;' : state.isFocused ? '#ffefe7' : 'transparent', 
-      color: '#000000',
-    }),
-  };
-
-  const sortingOptions = [
-    { value: 'rating', label: 'Highest rated restaurant' },
-    { value: 'created', label: 'Latest rated restaurant' },
-  ];
 
   const combinedData = [];
   userRatings?.forEach(rating => {

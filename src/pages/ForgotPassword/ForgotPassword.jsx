@@ -7,49 +7,48 @@ import './ForgotPassword.css'
 
 const ForgotPassword = () => {
 
-    const { loading, error } = useSelector(state => state.modal)
-    const { confirmationModalOpen } = useSelector(state => state.modal)
+  const { loading, error } = useSelector(state => state.modal)
+  const { confirmationModalOpen } = useSelector(state => state.modal)
 
-
-    const dispatch = useDispatch()
-    const [formData, setFormData] = useState({
-      email: '', 
-    })
+  const dispatch = useDispatch()
+  const [formData, setFormData] = useState({
+    email: '', 
+  })
   
-    const handleChange = (e) => {
-      const { id, value } = e.target
-      setFormData(initState => ({
-        ...initState,
-        [id]: value
-      }))
-    }
+  const handleChange = (e) => {
+    const { id, value } = e.target
+    setFormData(initState => ({
+      ...initState,
+      [id]: value
+    }))
+  }
   
-    const handleReset = async (e) => {
-      e.preventDefault()
-      await dispatch(resetPassword(formData.email))
-      if(formData.email) {
-        // dispatch(closeModal())
-        dispatch(openConfirmationModal())
-      }
+  const handleReset = async (e) => {
+    e.preventDefault()
+    await dispatch(resetPassword(formData.email))
+    if(formData.email) {
+      // dispatch(closeModal())
+      dispatch(openConfirmationModal())
     }
+  }
 
-    useEffect(() => {
-      dispatch(setError(''))
-    }, [])
+  useEffect(() => {
+    dispatch(setError(''))
+  }, [])
 
-    const handleCloseModal = () => {
-      dispatch(closeModal())
-    }
+  const handleCloseModal = () => {
+    dispatch(closeModal())
+  }
 
-    const handleOpenLoginModal = () => {
-        dispatch(closeModal())
-        dispatch(openLoginModal())
-    }
+  const handleOpenLoginModal = () => {
+    dispatch(closeModal())
+    dispatch(openLoginModal())
+  }
 
   return (
     <div className='ForgotPassword padding-top-navbar'>
        { confirmationModalOpen && <ConfirmationModal text="Check your inbox for an email!"/> }
-       <div className='btn-and-form'>
+      <div className='btn-and-form'>
       <div className='form-container'>
         <h1>Reset Password</h1>
         <form noValidate className='reset-form'>

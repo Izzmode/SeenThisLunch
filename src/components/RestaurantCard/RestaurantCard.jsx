@@ -3,6 +3,7 @@ import { FaRegStar, FaStar } from 'react-icons/fa';
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import defaultImage from '../../assets/default-image.jpg'
+import { calcAvarageRating } from '../../helper';
 import './RestaurantCard.css'
 
 const RestaurantCard = ({ restaurant, ratings }) => {
@@ -10,19 +11,7 @@ const RestaurantCard = ({ restaurant, ratings }) => {
   const [averageRatingDisplayed, setAverageRatingDisplayed] = useState(null);
 
   useEffect(() => {
-    if (!restaurant || ratings?.length === 0) {
-      setAverageRatingDisplayed(null);
-    } else {
-      const totalRating = ratings?.reduce((acc, rating) => {
-        if (typeof rating === 'number') {
-          return acc + rating;
-        } else {
-          return acc + rating.rating;
-        }
-      }, 0);
-      const averageRating = totalRating / ratings?.length;
-      setAverageRatingDisplayed(Math.round(averageRating * 100) / 100);
-    }
+    setAverageRatingDisplayed(calcAvarageRating(restaurant, ratings))
   }, [restaurant, ratings]);
 
   return (

@@ -10,18 +10,24 @@
   font-family: 'SpaceGroteskRegular', serif;
   font-size: 1.2rem;
 
+  .container {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
   .logo {
     border: 2px solid var(--dark-orange);
     padding: .5rem;
   }
 
-  .active {
-    border-bottom: 2px solid var(--dark-orange);
-  }
-
-  a {
-    color: var(--dark-orange);
-    text-decoration: none;
+  .ul-list {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
   }
 
   .list-item {
@@ -40,19 +46,13 @@
     margin-bottom: -4px;
   }
 
-  .container {
-    width: 75%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
+  .active {
+    border-bottom: 2px solid var(--dark-orange);
   }
 
-  .ul-list {
-    display: flex;
-    align-items: baseline;
-    gap: 2rem;
+  a {
+    color: var(--dark-orange);
+    text-decoration: none;
   }
 
   .not-verified-prompt {
@@ -94,6 +94,15 @@
     z-index: 1001;
     height: 5rem;
 
+    .container {
+      width: 95%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
+      align-items: center;
+    }
+
     .hamburger-menu {
       display: block;
     }
@@ -103,7 +112,7 @@
     }
 
     .ul-list {
-    display: none;
+      display: none;
     }
 
     .openMenu.ul-list {
@@ -122,15 +131,6 @@
       width: 100%;
       padding: 1rem;
       border-bottom: 1px solid var(--dark-orange);
-    }
-  
-    .container {
-      width: 95%;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      height: 100%;
-      align-items: center;
     }
   
   }
