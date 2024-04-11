@@ -11,7 +11,7 @@ const InfoBox = ({restaurant}) => {
           { restaurant.openingHours && restaurant.closingHours ?
           <span>{restaurant.openingHours} - {restaurant.closingHours}</span>
             :
-            <span className='info-card-text'>Opening hours are not registered</span>
+            <span>Opening hours are not registered</span>
           }
         </p>
         <p className='icon-and-number'>

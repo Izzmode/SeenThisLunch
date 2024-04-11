@@ -39,20 +39,15 @@
     display: none;
   }
 
-  .test {
+  .outdoor-seating-checkbox {
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
   }
-
-  /* #outdoorSeating {
-    width: 15rem;
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    align-items: center;
-  } */
   
-
+  .btn-random {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
 }
 

@@ -23,7 +23,7 @@ const Checkbox = ({ label, initState, handleChange, id}) => {
       id={id}
       />
       
-      <span>{label}</span>
+      <span className='checkbox-label-text'>{label}</span>
     </label>
   </div>
   )

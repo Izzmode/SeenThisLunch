@@ -44,4 +44,29 @@
     color: #c0c0c0;
   }
 
+  @media screen and (max-width: 700px) {
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* flex-direction: column; */
+    }
+
+    label input {
+      min-width: 1.2rem;
+      min-height: 1.2rem;
+      border-radius: 0.3rem;
+      margin-right: 1rem;
+    }
+
+    .checkbox-label-text {
+      /* width: 85%; */
+      text-align: start;
+    } 
+
+
+
+
+  }
+
 }

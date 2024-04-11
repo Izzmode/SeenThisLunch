@@ -18,10 +18,8 @@ const FoodOptions = ({ filters, handleChange, heading, randomRestaurantId, showS
       <MdOutlineKeyboardArrowDown className={`icon-arrow-down ${rotateArrow && 'arrow-down'}`} onClick={() => setRotateArrow(!rotateArrow)}/>
       <div className={`foodoptions-and-btn ${rotateArrow ? '' : 'hide-foodoptions'}`}>
          { showSeatingCheckbox &&
-          <div className='test'>
-          {/* <button type="button" className={filters.outdoorSeating ? 'btn' : 'btn-disabled'} onClick={handleChange} id="outdoorSeating">Outdoor Seating <FaCloudSun/></button> */}
-
-          <Checkbox label="The restaurant should offer outdoor seating" handleChange={handleChange} id="outdoorSeating" initState={false}/>
+          <div className='outdoor-seating-checkbox'>
+          <Checkbox label="Outdoor seating" handleChange={handleChange} id="outdoorSeating" initState={false}/>
           </div>
           }
         <div className="foodoptions-wrapper">
@@ -40,12 +38,11 @@ const FoodOptions = ({ filters, handleChange, heading, randomRestaurantId, showS
           <button type="button" className={filters.foodOption_Tacos ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Tacos">Tacos</button>
           <button type="button" className={filters.foodOption_Vegan ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Vegan">Vegan</button>
           <button type="button" className={filters.foodOption_Vegetarian ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Vegetarian">Vegetarian</button>
-          {/* <button type="button" className={filters.outdoorSeating ? 'btn' : 'btn-disabled'} onClick={handleChange} id="outdoorSeating">Outdoor Seating</button> */}
         </div>
         {randomRestaurantId &&
         <div className='random-link-wrapper'>
           <Link to={`/restaurants/${randomRestaurantId}`}>
-            <button className="btn-light btn-random">
+            <button className="btn btn-random">
             Can't decide? Discover a random restaurant!
             </button>
           </Link>

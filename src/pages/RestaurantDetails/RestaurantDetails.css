@@ -41,7 +41,7 @@
 
   .info-container {
     padding-top: 1.3rem;
-    width: 85%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@
 
   .map-container {
     width: 100%;
-    height: 400px;
+    height: 28rem;
   }
 
   .icon-and-number {
@@ -114,15 +114,11 @@
     display: flex;
     justify-content: space-around;
     gap: 5rem;
-    /* font-family: 'InterRegular', sans-serif; */
     margin-top: 1rem;
     padding: 2rem;
     border-radius: 1rem;
-    border: 2px solid var(--dark-orange);
-    /* background-color: RGB(240, 240, 240); */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);  
     background-color: var(--light-orange);
-    background-color: white;
   }
 
   .rating-stars {
@@ -139,7 +135,7 @@
     align-items: center;
     font-size: 1rem;
     text-align: center;
-    font-family: 'SpaceGroteskBold', sans-serif;
+    font-family: 'SpaceGroteskRegular', sans-serif;
   }
 
   .icon-star {
@@ -161,6 +157,7 @@
 
   .website-btn {
     width: 100%;
+    min-width: 27rem;
     padding: .5rem;
     border-radius: .5rem;
     border: transparent;
@@ -170,9 +167,8 @@
     font-family: 'SpaceGroteskRegular', sans-serif;
     font-size: 1rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    min-width: 28rem;
   }
-
+  
   @media screen and (max-width: 1100px) {
 
 

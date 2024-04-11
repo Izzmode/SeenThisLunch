@@ -195,7 +195,7 @@ const RestaurantDetails = () => {
               </div>
               :
               <div className='map-container'>
-                <Map initialAddress="Hammarby kaj 10d, Stockholm"/>
+                <Map initialAddress="Hammarby kaj 10d, Stockholm" height='100%'/>
               </div>
               }
 
