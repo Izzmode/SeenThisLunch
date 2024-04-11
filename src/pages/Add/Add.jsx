@@ -151,18 +151,18 @@ const Add = () => {
       <p className='margin-p'>The more details you provide, the easier it will be for others to find their next favorite lunch spot.</p>
       </div>
       <form className="add-resturant-form">
-      <p className='error'>{errorMessage && errorMessage}</p>
+      <p className={errorMessage ? 'error' : 'hide-error'}>{errorMessage}</p>
         <label htmlFor="name">Resturant name *
           <input type="text" id="name" className='resturant-input' autoComplete="off" value={formData.name} onChange={handleChange}/>
         </label>
-        <p className='error'>{errorMessageURL && errorMessageURL}</p>
+        <p className={errorMessageURL ? 'error' : 'hide-error'}>{errorMessageURL}</p>
         <label htmlFor="website">Website URL *
           <input type="text" id="website" className='resturant-input' autoComplete="off" value={formData.website} onChange={handleChange}/>
         </label>
         <label htmlFor="imageURL">Image URL
           <input type="text" id="imageURL" className='resturant-input' autoComplete="off" value={formData.imageURL} onChange={handleChange}/>
         </label>
-        <p className='error'>{errorMessageArea && errorMessageArea}</p>
+        <p className={errorMessageArea ? 'error' : 'hide-error'}>{errorMessageArea}</p>
         <label htmlFor="area">Area *
           <Select
             id="area"

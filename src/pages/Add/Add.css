@@ -50,7 +50,12 @@
     background-color: grey;
   }
 
+  .hide-error {
+    display: none;
+  }
+
   .error {
+    display: block;
     color: hsl(0, 80%, 50%);
   }
 

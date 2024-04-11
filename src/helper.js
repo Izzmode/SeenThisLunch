@@ -1,5 +1,3 @@
-
-
 export const formatDate = (date) => {
   const newDate = new Date(date);
   const options = { day: 'numeric', month: 'long', year: 'numeric' };
@@ -40,7 +38,8 @@ export const customStyles = {
     ...provided,
     border: state.isFocused ? '1px solid grey' : '1px solid grey', 
     height: '3rem',
-    boxShadow: 'none', 
+    boxShadow: 'none',
+    borderRadius: '8px', 
     '&:hover': {
       borderColor: 'grey',
     }
