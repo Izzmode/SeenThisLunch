@@ -31,7 +31,7 @@ const Profile = () => {
     if (restaurant) {
         combinedData.push({
           rating: rating.rating,
-          createdAt: rating.createdAt,
+          updatedAt: rating.updatedAt,
           ...restaurant
         });   
     }
@@ -107,7 +107,7 @@ const Profile = () => {
               if (sortRatedRestaurantsBy === 'rating') {
                 return b.rating - a.rating;
               } else {
-                return new Date(b.createdAt) - new Date(a.createdAt);
+                return new Date(b.updatedAt) - new Date(a.updatedAt);
               }
             })
             .map(ratedRestaurant => (

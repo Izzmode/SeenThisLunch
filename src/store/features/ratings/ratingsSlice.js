@@ -43,7 +43,7 @@ export const getUserRatings = createAsyncThunk('ratings/getUserRatings', async (
         const userRatings = await ratingsService.getRatingsByUserAsync(userId);
         const serializedUserRatings = userRatings.map(rating => ({
           ...rating,
-          createdAt: rating.createdAt ? rating.createdAt.toISOString() : null
+          updatedAt: rating.updatedAt ? rating.updatedAt.toISOString() : null
         }));
         return serializedUserRatings;
 

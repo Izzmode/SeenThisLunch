@@ -10,10 +10,10 @@ const addRatingAsync = async (userId, restaurantId, rating) => {
     if (!querySnapshot.empty) {
       querySnapshot.forEach(async (doc) => {
         const docRef = doc.ref
-        await updateDoc(docRef, { rating })
+        await updateDoc(docRef, { rating, updatedAt: serverTimestamp() })
       })
     } else {
-      await addDoc(ratingsCollectionRef, { userId, restaurantId, rating, createdAt: serverTimestamp() })
+      await addDoc(ratingsCollectionRef, { userId, restaurantId, rating, updatedAt: serverTimestamp() })
     }
   } catch (error) {
     console.error("Error adding/updating rating: ", error)
@@ -61,9 +61,9 @@ const getRatingsByUserAsync = async (userId) => {
     let userRatings = []
     querySnapshot.forEach((doc) => {
       const data = doc.data();
-      const createdAt = data.createdAt ? data.createdAt.toDate() : null;
+      const updatedAt = data.updatedAt ? data.updatedAt.toDate() : null;
 
-      userRatings.push({'rating': data.rating, createdAt, 'restaurant': data.restaurantId})
+      userRatings.push({'rating': data.rating, updatedAt, 'restaurant': data.restaurantId})
     });
     return userRatings
   } catch(err) {

@@ -33,7 +33,7 @@ const RatedRestaurantCard = ({ ratedRestaurant }) => {
           <p>This place did not meet your expectations at all unfortunately.</p>
         }
         
-        <p>On {formatDate(ratedRestaurant.createdAt)} you gave it <b>{ratedRestaurant.rating}
+        <p>On {formatDate(ratedRestaurant.updatedAt)} you gave it <b>{ratedRestaurant.rating}
         {ratedRestaurant.rating == 1 ? ' star.' : ' stars.'}</b></p>
 
         <Link to={`/restaurants/${ratedRestaurant.id}`}> Go to restaurant</Link>
