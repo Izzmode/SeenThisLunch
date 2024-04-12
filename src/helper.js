@@ -83,4 +83,3 @@ export const sortingOptions = [
   //     color: '#000000',
   //   }),
   // };
-

@@ -5,7 +5,6 @@ import 'leaflet/dist/leaflet.css';
 import markerImage from '../../assets/marker.png'
 
 const Map = ({ initialAddress, height }) => {
-  console.log(height, 'height')
   const mapRef = useRef(null);
   const distanceRef = useRef(null);
 

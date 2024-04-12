@@ -20,8 +20,8 @@ const SimilarRestaurants = ({ restaurant, restaurants }) => {
       return false; 
     }
 
-    const foodOptionsFromAllRestaurants = [];
     const foodOptionsFromThisRestaurant = [];
+    const foodOptionsFromAllRestaurants = [];
 
     for (const key in restaurant) {
       if (key.startsWith('foodOption_') && restaurant[key]) {
@@ -66,10 +66,12 @@ const SimilarRestaurants = ({ restaurant, restaurants }) => {
       {similarRestaurants &&
       <div className='similar-restaurants'>
       {sortedSimilarRestaurants.slice(0, 3).map((res) => (
+        <div className='restaurant-card-wrapper'> 
         <RestaurantCard
         restaurant={res} 
         key={res.id} 
         ratings={getRatingsForRestaurant(res.id)}/>
+        </div>
         ))}
 
       </div>

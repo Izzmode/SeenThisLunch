@@ -138,11 +138,13 @@ return (
             .filter(restaurant => restaurant.area === area)
             .slice(0, expandedAreas[area] ? filteredRestaurants.filter(restaurant => restaurant.area === area).length : 3)
             .map(restaurant => (
+              <div className="restaurant-card-wrapper">
               <RestaurantCard
                 restaurant={restaurant}
                 key={restaurant.id}
                 ratings={getRatingsForRestaurant(restaurant.id)}
               />
+              </div>
           ))}
         </div>
         {filteredRestaurants.filter(restaurant => restaurant.area === area).length > 3 && (

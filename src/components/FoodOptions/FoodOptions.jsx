@@ -24,6 +24,7 @@ const FoodOptions = ({ filters, handleChange, heading, randomRestaurantId, showS
           }
         <div className="foodoptions-wrapper">
           <button type="button" className={filters.foodOption_Buffet ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Buffet" name="foodOption_Buffet">Buffet</button>
+          <button type="button" className={filters.foodOption_Drinks ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Drinks" name="foodOption_Drinks">Drinks</button>
           <button type="button" className={filters.foodOption_Fish ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Fish" name="foodOption_Fish">Fish</button>
           <button type="button" className={filters.foodOption_Hamburger ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Hamburger">Hamburger</button>
           <button type="button" className={filters.foodOption_Other ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Other">Other</button>
@@ -38,6 +39,7 @@ const FoodOptions = ({ filters, handleChange, heading, randomRestaurantId, showS
           <button type="button" className={filters.foodOption_Tacos ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Tacos">Tacos</button>
           <button type="button" className={filters.foodOption_Vegan ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Vegan">Vegan</button>
           <button type="button" className={filters.foodOption_Vegetarian ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Vegetarian">Vegetarian</button>
+          <button type="button" className={filters.foodOption_Wraps ? 'btn' : 'btn-disabled'} onClick={handleChange} id="foodOption_Wraps">Wraps</button>
         </div>
         {randomRestaurantId &&
         <div className='random-link-wrapper'>

@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { MdDinnerDining, MdOutlineFoodBank, MdOutlineRestaurant } from "react-icons/md";
-import { GiBowlOfRice, GiSteak, GiSausage, GiSushis, GiTacos, GiCook } from "react-icons/gi";
-import { FaRegStar, FaFish, FaStar, FaHamburger, FaLeaf, FaCarrot, FaPizzaSlice } from 'react-icons/fa';
+import { GiBowlOfRice, GiSteak, GiSausage, GiSushis, GiTacos, GiCook, GiAvocado } from "react-icons/gi";
+import { FaRegStar, FaFish, FaStar, FaHamburger, FaLeaf, FaCarrot, FaPizzaSlice, FaGlassCheers } from 'react-icons/fa';
 import { FaBowlFood } from "react-icons/fa6";
 import { getRestaurant, getRestaurants } from "../../store/features/restaurants/restaurantSlice";
 import { addRating, getRatingsByRestaurant, getUserRatings } from '../../store/features/ratings/ratingsSlice';
@@ -46,6 +46,7 @@ const RestaurantDetails = () => {
 
   const foodIcons = {
     Buffet: <GiCook />,
+    Drinks: <FaGlassCheers/>,
     Fish: <FaFish />,
     Hamburger: <FaHamburger />,
     Other: <MdOutlineRestaurant />,
@@ -60,6 +61,7 @@ const RestaurantDetails = () => {
     Tacos: <GiTacos />,
     Vegan: <FaLeaf />,
     Vegetarian: <FaCarrot />,
+    Wraps: <GiAvocado />,
   };
   
   useEffect(() => {
