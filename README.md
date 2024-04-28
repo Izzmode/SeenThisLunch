@@ -8,16 +8,6 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
-tbd 
-lägg till ratings på personen istället för resturangen, som likes på techspace
-detta innebär att en user behöver ha ett fält som heter ratings som innehåller en koppling till restaurang id?
-
-gör en egen collection för ratings där man kopplar till användar id?
-
-vad vill jag skydda och inte?? vad ska synas som oinloggad
-modals
-
+to deploy to the firebase (https://lunch-77c6b.web.app/)
 npm run build
 firebase deploy
-//bara detta för att deploya??
-//köp ett domain och lägg till custom domain i firebase?

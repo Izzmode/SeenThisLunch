@@ -21,8 +21,10 @@ const login = async (email, password) => {
     email: userCredential.user.email,
     verifiedEmail: userCredential.user.emailVerified
   }
-
-  localStorage.setItem(`verifiedEmail${userCredential.user.uid}`, userCredential.user.emailVerified);
+  localStorage.setItem(
+    `verifiedEmail${userCredential.user.uid}`,
+    JSON.stringify(userCredential.user.emailVerified)
+  );
   return user
 }
 const logout = async () => {

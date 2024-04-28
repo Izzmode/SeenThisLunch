@@ -99,7 +99,7 @@ const Home = () => {
       });
     });
 
-    // Get unique areas from filtered restaurants and sort them alphabetically (except for other)
+    // Get unique areas from filtered restaurants and sort them alphabetically (except for 'other')
   const uniqueAreas = [...new Set(filteredRestaurants.map(restaurant => restaurant.area))].sort((a, b) => {
     if (a === "Other") return 1; 
     if (b === "Other") return -1; 
@@ -130,18 +130,17 @@ return (
     {filteredRestaurants.length === 0 && startedFiltering &&
       <p className="filtered-text">No restaurants matched your criteria :(</p>
     }
-    {uniqueAreas.map(area => (
-      <div key={area} className="restaurant-area-container">
+    {uniqueAreas.map((area, index) => (
+      <div key={index} className="restaurant-area-container">
         <h2 className="area-heading">{area}</h2>
         <div className="card-container">
           {filteredRestaurants
             .filter(restaurant => restaurant.area === area)
             .slice(0, expandedAreas[area] ? filteredRestaurants.filter(restaurant => restaurant.area === area).length : 3)
             .map(restaurant => (
-              <div className="restaurant-card-wrapper">
+              <div className="restaurant-card-wrapper" key={restaurant.id}>
               <RestaurantCard
                 restaurant={restaurant}
-                key={restaurant.id}
                 ratings={getRatingsForRestaurant(restaurant.id)}
               />
               </div>

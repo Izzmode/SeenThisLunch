@@ -73,7 +73,8 @@
     .filtered-text {
       width: 100%;
       padding: 0 .5rem;
-      margin-bottom: .5rem;
+      margin: 2rem 0 .5rem 0;
+      text-align: center;
     }
 
     .restaurant-card-wrapper {

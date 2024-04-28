@@ -27,9 +27,17 @@
       }
   }
   @media screen and (max-width: 700px) {
+    width: 100%;
+    padding: 1rem;
+
     .similar-restaurants {
         flex-direction: column;
         gap: 1.5rem;
+      }
+
+      .restaurant-card-wrapper {
+        width: 100%;
+        min-width: 100%;
       }
   }
 

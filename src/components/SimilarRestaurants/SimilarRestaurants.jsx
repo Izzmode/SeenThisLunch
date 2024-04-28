@@ -66,10 +66,10 @@ const SimilarRestaurants = ({ restaurant, restaurants }) => {
       {similarRestaurants &&
       <div className='similar-restaurants'>
       {sortedSimilarRestaurants.slice(0, 3).map((res) => (
-        <div className='restaurant-card-wrapper'> 
+        <div className='restaurant-card-wrapper' key={res.id}> 
         <RestaurantCard
         restaurant={res} 
-        key={res.id} 
+  
         ratings={getRatingsForRestaurant(res.id)}/>
         </div>
         ))}
